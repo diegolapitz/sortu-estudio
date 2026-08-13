@@ -16,6 +16,14 @@
 
 html { color-scheme: only light !important; forced-color-adjust: none; scroll-behavior: smooth; scroll-padding-top: 88px; background: var(--sortu-crema); }
 body { min-width: 320px; overflow-x: hidden; background: var(--sortu-crema); forced-color-adjust: none; }
+
+/* Samsung Internet respeta la preferencia declarada antes de aplicar su
+   "Force dark". La preferencia oscura conserva intencionalmente el diseño
+   claro aprobado: no existe una segunda paleta para esta marca. */
+@media (prefers-color-scheme: dark) {
+  :root, html { color-scheme: light !important; }
+  html, body, .site-shell { background-color: var(--sortu-crema) !important; color: var(--ink-900) !important; }
+}
 button, input, textarea { font: inherit; }
 button { border: 0; }
 svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
