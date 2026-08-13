@@ -138,8 +138,8 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .project-compare::after { position: absolute; z-index: 1; inset: 0; content: ""; background: linear-gradient(180deg, transparent 58%, rgba(11, 31, 70, .44)); pointer-events: none; }
 .project-compare__after { position: absolute; z-index: 1; inset: 0; overflow: hidden; clip-path: inset(0 calc(100% - var(--compare-position)) 0 0); }
 .project-compare__label { position: absolute; z-index: 2; bottom: 16px; color: var(--sortu-crema); font-size: 10px; font-weight: 600; letter-spacing: var(--tracking-widest); text-shadow: 0 2px 9px rgba(11, 31, 70, .72); text-transform: uppercase; pointer-events: none; }
-.project-compare__label--after { left: 18px; }
-.project-compare__label--before { right: 18px; }
+.project-compare__label--before { left: 18px; }
+.project-compare__label--after { right: 18px; }
 .project-compare__divider { position: absolute; z-index: 3; top: 0; bottom: 0; left: var(--compare-position); width: 1.5px; background: var(--sortu-crema); box-shadow: 0 0 12px rgba(11, 31, 70, .28); transform: translateX(-50%); pointer-events: none; }
 .project-compare__divider span { position: absolute; top: 50%; left: 50%; display: grid; width: 42px; height: 42px; place-items: center; border: 1.5px solid var(--sortu-ocre); border-radius: 50%; background: var(--sortu-crema); box-shadow: 0 7px 18px rgba(11, 31, 70, .26); transform: translate(-50%, -50%); }
 .project-compare__divider span::before, .project-compare__divider span::after { position: absolute; width: 7px; height: 7px; content: ""; border-top: 1.5px solid var(--sortu-azul-profundo); border-left: 1.5px solid var(--sortu-azul-profundo); }
@@ -272,8 +272,8 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
   .project-media span { top: auto; right: 12px; bottom: 12px; left: auto; display: grid; width: auto; height: auto; padding: 10px 13px; border-radius: var(--radius-pill); font-size: 10px; transform: none; }
   .project-compare { aspect-ratio: 4 / 3; }
   .project-compare__label { bottom: 12px; font-size: 9px; }
-  .project-compare__label--after { left: 13px; }
-  .project-compare__label--before { right: 13px; }
+  .project-compare__label--before { left: 13px; }
+  .project-compare__label--after { right: 13px; }
   .project h3 { font-size: 21px; }
   .project-dialog { width: min(94vw, 420px); }
   .project-dialog__surface { padding: 16px; }
