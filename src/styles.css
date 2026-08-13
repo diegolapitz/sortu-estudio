@@ -126,6 +126,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .project:hover .project-media::after, .project-media:focus-visible::after { background: rgba(27, 58, 140, .2); }
 .project-media:focus-visible { outline: 2px solid var(--sortu-ocre); outline-offset: 5px; }
 .project h3 { margin-top: 12px; color: var(--sortu-crema); font-size: var(--text-xl); letter-spacing: var(--tracking-tight); }
+.project-meta { margin: 6px 0 0; color: rgba(245, 237, 214, .64); font-size: var(--text-2xs); font-weight: 600; letter-spacing: var(--tracking-wider); text-transform: uppercase; }
 .project--food > p { margin: 14px 0 0; color: var(--sortu-ocre); font-size: var(--text-2xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; }
 .project--food h3 { margin-top: 6px; }
 .project-food-stack { position: relative; min-height: 310px; isolation: isolate; }

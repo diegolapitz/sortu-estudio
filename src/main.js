@@ -208,7 +208,7 @@ function setupContactForm() {
       'Mensaje:',
       values.mensaje || '—',
     ].join('\n');
-    window.location.href = `mailto:hola@estudiosortu.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:guadamadrazo@estudiosortu.com.ar?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     form.hidden = true;
     success.hidden = false;
     shell.classList.add('is-sent');
