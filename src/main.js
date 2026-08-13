@@ -4,6 +4,12 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 
+function clearInitialHash() {
+  if (!window.location.hash) return;
+  window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+  window.scrollTo(0, 0);
+}
+
 function revealOnScroll() {
   if (prefersReducedMotion) {
     $$('.reveal').forEach((element) => element.classList.add('is-visible'));
@@ -224,15 +230,7 @@ function setupContactForm() {
   });
 }
 
-function alignInitialAnchor() {
-  if (!window.location.hash) return;
-  const target = document.querySelector(window.location.hash);
-  if (!target) return;
-  const header = document.querySelector('.site-header');
-  const offset = (header?.getBoundingClientRect().height || 78) + 10;
-  window.scrollTo(0, window.scrollY + target.getBoundingClientRect().top - offset);
-}
-
+clearInitialHash();
 document.querySelector('[data-year]').textContent = new Date().getFullYear();
 revealOnScroll();
 syncHeaderLogo();
@@ -244,4 +242,3 @@ setupPortfolioCursor();
 setupProjectDialog();
 setupParallax();
 setupContactForm();
-window.addEventListener('load', () => window.setTimeout(alignInitialAnchor, 0), { once: true });
