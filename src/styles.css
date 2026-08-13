@@ -129,10 +129,11 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .project-meta { margin: 6px 0 0; color: rgba(245, 237, 214, .64); font-size: var(--text-2xs); font-weight: 600; letter-spacing: var(--tracking-wider); text-transform: uppercase; }
 .project--food > p { margin: 14px 0 0; color: var(--sortu-ocre); font-size: var(--text-2xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; }
 .project--food h3 { margin-top: 6px; }
-.project-food-stack { position: relative; min-height: 310px; isolation: isolate; }
+.project-food-stack { position: relative; aspect-ratio: 1.05 / 1; min-height: 0; padding: 7px 6px 12px 5px; isolation: isolate; }
 .project-food-stack__photo { position: absolute; display: block; overflow: hidden; border: 7px solid var(--sortu-crema); border-radius: 3px; object-fit: cover; box-shadow: var(--shadow-paper); }
-.project-food-stack__photo--before { z-index: 1; top: 4px; left: 0; width: 59%; aspect-ratio: 3 / 4; object-position: center; transform: rotate(-4deg); }
-.project-food-stack__photo--after { z-index: 2; right: 0; bottom: 0; width: 72%; aspect-ratio: 4 / 3; object-position: center; transform: rotate(3deg); }
+.project-food-stack__photo--before { z-index: 1; top: 7px; left: 0; width: 64%; aspect-ratio: 3 / 4; object-position: center; transform: rotate(-3deg); }
+.project-food-stack__photo--after { z-index: 2; right: 0; bottom: 8px; width: 58%; aspect-ratio: 4 / 3; object-position: center; transform: rotate(3deg); }
+.project--food > p { margin-top: 20px; }
 .portfolio-cursor { position: fixed; z-index: 90; top: var(--cursor-y, -120px); left: var(--cursor-x, -120px); display: grid; width: 92px; height: 92px; place-items: center; border-radius: 50%; background: var(--sortu-ocre); color: var(--ink-900); font-size: var(--text-2xs); letter-spacing: var(--tracking-widest); pointer-events: none; text-transform: uppercase; opacity: 0; transform: translate(-50%, -50%) scale(.72); transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-base) var(--ease-soft); }
 .portfolio-cursor.is-active { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
@@ -155,7 +156,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .founder-image-wrap { display: flex; flex-direction: column; align-items: flex-start; }
 .founder-image-wrap h3 { position: relative; z-index: 0; margin: 0 0 -.28em -.04em; color: var(--sortu-verde); font-size: clamp(56px, 6.5vw, 93px); font-weight: 600; line-height: .92; letter-spacing: -.052em; }
 .founder-image-wrap img { position: relative; z-index: 1; display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center; background: var(--sortu-crema-clara); box-shadow: var(--shadow-sm); }
-.founder--martu img { border-radius: var(--radius-blob); object-position: center 15%; }
+.founder--martu img { border-radius: var(--radius-blob); object-position: center; }
 .founder--guada { align-items: flex-end; text-align: right; }
 .founder--guada .founder-image-wrap { align-items: flex-end; }
 .founder--guada .founder-image-wrap h3 { margin-right: -.04em; margin-left: 0; }
