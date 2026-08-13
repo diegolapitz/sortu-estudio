@@ -87,23 +87,6 @@ function observeVideos() {
   videos.forEach((video) => observer.observe(video));
 }
 
-function setupHeroVideo() {
-  const frame = document.querySelector('[data-video-frame]');
-  const button = document.querySelector('[data-video-toggle]');
-  const video = frame?.querySelector('video');
-  if (!video || !button) return;
-
-  const update = () => {
-    const paused = video.paused;
-    frame.classList.toggle('is-paused', paused);
-    button.setAttribute('aria-label', paused ? 'Reproducir reel' : 'Pausar reel');
-  };
-  button.addEventListener('click', () => (video.paused ? safePlay(video) : video.pause()));
-  video.addEventListener('play', update);
-  video.addEventListener('pause', update);
-  update();
-}
-
 function setupServices() {
   const rows = $$('[data-service]');
   const videos = $$('[data-service-video]');
@@ -125,6 +108,7 @@ function setupServices() {
     row.addEventListener('focus', activateRow);
     row.addEventListener('click', activateRow);
   });
+  activate(0);
 }
 
 function setupPortfolioCursor() {
@@ -152,14 +136,21 @@ function setupProjectDialog() {
   if (!dialog || !closeButton || !title || !video || !triggers.length) return;
 
   let opener = null;
-  const close = () => dialog.close();
+  const close = () => {
+    if (dialog.hidden) return;
+    dialog.hidden = true;
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+    opener?.focus();
+  };
 
   triggers.forEach((trigger) => {
     trigger.addEventListener('click', () => {
       opener = trigger;
       title.textContent = trigger.dataset.projectTitle;
       video.src = trigger.dataset.projectSrc;
-      dialog.showModal();
+      dialog.hidden = false;
       safePlay(video);
     });
   });
@@ -169,25 +160,9 @@ function setupProjectDialog() {
     if (event.target === dialog) close();
   });
   document.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape' || !dialog.open) return;
+    if (event.key !== 'Escape' || dialog.hidden) return;
     event.preventDefault();
     close();
-  });
-  dialog.addEventListener('close', () => {
-    video.pause();
-    video.removeAttribute('src');
-    video.load();
-    opener?.focus();
-  });
-}
-
-function setupImageComparisons() {
-  $$('[data-image-compare]').forEach((comparison) => {
-    const range = comparison.querySelector('[data-compare-range]');
-    if (!range) return;
-    const update = () => comparison.style.setProperty('--compare-position', `${range.value}%`);
-    range.addEventListener('input', update);
-    update();
   });
 }
 
@@ -246,10 +221,8 @@ revealOnScroll();
 syncHeaderLogo();
 setupMenu();
 observeVideos();
-setupHeroVideo();
 setupServices();
 setupPortfolioCursor();
 setupProjectDialog();
-setupImageComparisons();
 setupParallax();
 setupContactForm();

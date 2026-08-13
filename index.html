@@ -39,11 +39,6 @@
 
       <main>
         <section class="hero" id="top">
-          <img class="hero-shape hero-shape--ocre ambient" src="/assets/brand/shape-ocre.png" alt="" data-parallax="0.12" />
-          <img class="hero-shape hero-shape--coral ambient" src="/assets/brand/shape-coral.png" alt="" data-parallax="0.08" />
-          <img class="hero-shape hero-shape--blue ambient" src="/assets/brand/shape2-azul2.png" alt="" data-parallax="0.18" />
-          <img class="hero-branch ambient" src="/assets/brand/ramita-verde.png" alt="" data-parallax="0.04" />
-
           <div class="hero-inner container">
             <div class="hero-brand reveal">
               <img src="/assets/brand/logo-sortu-color.png" alt="Sortu Estudio" />
@@ -61,13 +56,11 @@
                 </div>
               </div>
 
-              <div class="hero-media reveal reveal--mask" data-video-frame>
-                <video src="/videos-etc/PARAISO.mp4" muted loop playsinline preload="metadata" aria-label="Reel de Sortu Estudio"></video>
-                <button class="video-toggle" type="button" aria-label="Pausar reel" data-video-toggle>
-                  <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 10 7-10 7V5Z" fill="currentColor" stroke="none" /></svg>
-                  <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg>
-                </button>
-                <span class="video-caption">Reel del estudio</span>
+              <div class="hero-art" aria-hidden="true">
+                <img class="hero-shape hero-shape--ocre ambient" src="/assets/brand/shape-ocre.png" alt="" data-parallax="0.12" />
+                <img class="hero-shape hero-shape--coral ambient" src="/assets/brand/shape-coral.png" alt="" data-parallax="0.08" />
+                <img class="hero-shape hero-shape--blue ambient" src="/assets/brand/shape2-azul2.png" alt="" data-parallax="0.18" />
+                <img class="hero-branch ambient" src="/assets/brand/ramita-verde.png" alt="" data-parallax="0.04" />
               </div>
             </div>
           </div>
@@ -129,7 +122,7 @@
           <div class="container portfolio-inner">
             <div class="section-heading">
               <p class="eyebrow eyebrow--ochre reveal">Proyectos</p>
-              <h2 class="reveal reveal--mask">Algunas cosas que hicimos</h2>
+              <h2 class="reveal reveal--mask">Proyectos que toman vida</h2>
             </div>
 
             <div class="project-grid">
@@ -150,17 +143,11 @@
                 <h3>Gastronomía</h3>
               </article>
               <article class="project project--food reveal reveal--mask">
-                <div class="project-compare" data-image-compare style="--compare-position: 50%">
-                  <img class="project-compare__image" src="/assets/portfolio/gastronomia/horneado.jpg" alt="Croissants después de hornear" />
-                  <div class="project-compare__after" data-compare-after>
-                    <img class="project-compare__image" src="/assets/portfolio/gastronomia/preparacion.jpg" alt="Croissants antes de hornear" />
-                  </div>
-                  <span class="project-compare__label project-compare__label--before" aria-hidden="true">Antes</span>
-                  <span class="project-compare__label project-compare__label--after" aria-hidden="true">Después</span>
-                  <span class="project-compare__divider" aria-hidden="true"><span></span></span>
-                  <input class="project-compare__range" data-compare-range type="range" min="0" max="100" value="50" aria-label="Deslizá para comparar los croissants antes y después de hornear" />
+                <div class="project-food-stack" role="group" aria-label="Fotografía gastronómica de croissants">
+                  <img class="project-food-stack__photo project-food-stack__photo--before" src="/assets/portfolio/gastronomia/preparacion.jpg" alt="Croissants antes de hornear" />
+                  <img class="project-food-stack__photo project-food-stack__photo--after" src="/assets/portfolio/gastronomia/horneado.jpg" alt="Croissants recién horneados" />
                 </div>
-                <p>Antes y después</p>
+                <p>Fotografía</p>
                 <h3>Gastronomía</h3>
               </article>
             </div>
@@ -222,7 +209,7 @@
         </section>
       </main>
 
-      <dialog class="project-dialog" data-project-dialog aria-labelledby="project-dialog-title">
+      <div class="project-dialog" data-project-dialog role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" hidden>
         <div class="project-dialog__surface">
           <div class="project-dialog__header">
             <div><h2 id="project-dialog-title" data-project-dialog-title></h2></div>
@@ -230,7 +217,7 @@
           </div>
           <div class="project-dialog__video-wrap"><video data-project-dialog-video controls playsinline preload="metadata"></video></div>
         </div>
-      </dialog>
+      </div>
 
       <footer class="site-footer">
         <div class="container footer-inner">
