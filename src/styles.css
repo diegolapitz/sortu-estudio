@@ -235,17 +235,18 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
   .hero-inner { padding-top: 28px; padding-bottom: 55px; }
   .hero-brand img { width: 146px; }
   .hero-brand p { font-size: 10px; }
-  .hero-grid { margin-top: 28px; gap: 36px; }
+  .hero-grid { margin-top: 28px; gap: 26px; }
+  .hero-copy { position: relative; z-index: 2; }
   .hero-title { font-size: clamp(58px, 17.1vw, 82px); }
   .hero-underline { width: 91%; margin-top: 9px; }
   .hero-intro { margin-top: 20px; font-size: 17px; }
   .hero-actions { width: 100%; margin-top: 24px; }
   .hero-actions .button { flex: 1 1 190px; padding-inline: 20px; }
-  .hero-art { min-height: 270px; margin-top: -22px; }
-  .hero-art .hero-shape--ocre { top: 2%; right: -8%; width: 255px; }
-  .hero-art .hero-shape--coral { right: -4%; bottom: -11%; width: 270px; }
-  .hero-art .hero-shape--blue { bottom: 4%; left: 5%; width: 92px; }
-  .hero-art .hero-branch { top: 7%; left: 16%; width: 125px; }
+  .hero-art { z-index: 1; min-height: 285px; margin-top: 8px; }
+  .hero-art .hero-shape--ocre { top: 8%; right: -4%; width: 190px; animation: none; }
+  .hero-art .hero-shape--coral { right: -8%; bottom: -2%; width: 165px; animation: none; }
+  .hero-art .hero-shape--blue { bottom: 5%; left: 2%; width: 82px; animation: none; }
+  .hero-art .hero-branch { top: 12%; left: 16%; width: 96px; animation: none; }
   .services-inner, .about-inner { padding-top: 72px; padding-bottom: 72px; }
   .portfolio-inner { padding-top: 68px; padding-bottom: 72px; }
   .contact-inner { padding-top: 72px; padding-bottom: 72px; }
