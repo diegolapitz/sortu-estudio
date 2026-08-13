@@ -162,8 +162,6 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .founder--guada img { border-radius: var(--radius-blob-alt); filter: grayscale(100%); }
 .founder-role { color: var(--sortu-verde); }
 .founder > p:last-child { max-width: 34ch; margin: 0; color: var(--ink-700); font-size: var(--text-base); line-height: var(--leading-relaxed); }
-.about-closing { display: flex; justify-content: center; margin-top: 96px; padding: 64px 0 32px; border-top: 1px solid var(--border-subtle); }
-.about-closing p { max-width: 23ch; margin: 0; color: var(--ink-900); font-size: clamp(29px, 3.6vw, 45px); line-height: 1.14; letter-spacing: var(--tracking-tight); text-align: center; }
 
 .contact { position: relative; overflow: clip; background: var(--sortu-azul-profundo); }
 .contact-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 80px; padding-top: 96px; padding-bottom: 96px; }
@@ -261,7 +259,6 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
   .founder { width: min(100%, 420px); }
   .founder--martu { justify-self: start; }
   .founder--guada { justify-self: end; }
-  .about-closing { margin-top: 72px; padding-top: 48px; }
   .contact-form form, .contact-success { padding: 32px 24px; }
   .contact-links a { padding: 15px 16px; font-size: 15px; }
   .footer-inner { align-items: flex-start; flex-direction: column; }
