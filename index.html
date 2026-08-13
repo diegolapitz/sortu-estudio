@@ -134,19 +134,19 @@
 
             <div class="project-grid">
               <article class="project project--one reveal reveal--mask" data-project>
-                <div class="project-media"><video src="/videos-etc/PARAISO.mp4" muted loop playsinline preload="metadata"></video><span>Ver</span></div>
+                <button class="project-media" type="button" data-project-open data-project-title="Paraíso" data-project-src="/videos-etc/PARAISO.mp4" aria-label="Abrir reel completo: Paraíso"><video src="/videos-etc/PARAISO.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video><span>Ver reel</span></button>
                 <h3>Paraíso</h3>
               </article>
               <article class="project project--two reveal reveal--mask" data-project>
-                <div class="project-media"><video src="/videos-etc/nos%20mudamos%20modificado.mp4" muted loop playsinline preload="metadata"></video><span>Ver</span></div>
+                <button class="project-media" type="button" data-project-open data-project-title="Nos mudamos" data-project-src="/videos-etc/nos%20mudamos%20modificado.mp4" aria-label="Abrir reel completo: Nos mudamos"><video src="/videos-etc/nos%20mudamos%20modificado.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video><span>Ver reel</span></button>
                 <h3>Nos mudamos</h3>
               </article>
               <article class="project project--three reveal reveal--mask" data-project>
-                <div class="project-media"><video src="/videos-etc/Nos%20denunciaron.mp4" muted loop playsinline preload="metadata"></video><span>Ver</span></div>
+                <button class="project-media" type="button" data-project-open data-project-title="Nos denunciaron" data-project-src="/videos-etc/Nos%20denunciaron.mp4" aria-label="Abrir reel completo: Nos denunciaron"><video src="/videos-etc/Nos%20denunciaron.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video><span>Ver reel</span></button>
                 <h3>Nos denunciaron</h3>
               </article>
               <article class="project project--four reveal reveal--mask" data-project>
-                <div class="project-media"><video src="/videos-etc/YO%20CON%20PLATA%20VS%20YO%20SIN%20PLATA.mp4" muted loop playsinline preload="metadata"></video><span>Ver</span></div>
+                <button class="project-media" type="button" data-project-open data-project-title="Yo con plata vs. yo sin plata" data-project-src="/videos-etc/YO%20CON%20PLATA%20VS%20YO%20SIN%20PLATA.mp4" aria-label="Abrir reel completo: Yo con plata vs. yo sin plata"><video src="/videos-etc/YO%20CON%20PLATA%20VS%20YO%20SIN%20PLATA.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video><span>Ver reel</span></button>
                 <h3>Yo con plata vs. yo sin plata</h3>
               </article>
             </div>
@@ -158,23 +158,23 @@
             <div class="about-heading">
               <p class="eyebrow eyebrow--green reveal">Nosotras</p>
               <h2 class="reveal reveal--mask">Somos dos, y trabajamos como una</h2>
-              <p class="section-lede reveal">Sortu existe porque Guada y Martu combinan dos perfiles complementarios: estrategia, comunicación y producción. Las decisiones se toman entre las dos, siempre.</p>
+              <p class="section-lede reveal">Sortu existe porque Guada y Martu combinan dos perfiles complementarios: estrategia, comunicación y producción.</p>
             </div>
 
             <div class="founder-grid">
               <article class="founder founder--martu reveal reveal--left">
                 <div class="founder-image-wrap"><h3>Martu</h3><img src="/videos-etc/Foto%20Martu.jpg" alt="Martu, cofundadora de Sortu Estudio" /></div>
                 <p class="founder-role">Estrategia y realización</p>
-                <p>Productora audiovisual enfocada en marketing estratégico. Piensa cada pieza para que la marca tenga una llegada orgánica y humana.</p>
+                <p>Productora audiovisual enfocada en estrategia y realización. Lleva cada idea desde lo que una marca necesita decir hasta cómo resolverlo en cámara.</p>
               </article>
               <article class="founder founder--guada reveal reveal--right">
                 <div class="founder-image-wrap"><h3>Guada</h3><img src="/videos-etc/Foto%20Guada.png" alt="Guada, cofundadora de Sortu Estudio" /></div>
                 <p class="founder-role">Comunicación digital</p>
-                <p>Productora audiovisual especializada en comunicación digital. Es el puente con los clientes y quien ordena procesos y tiempos.</p>
+                <p>Productora audiovisual especializada en comunicación digital. Acompaña a cada cliente y ordena procesos, tiempos y canales para que el trabajo avance.</p>
               </article>
             </div>
 
-            <div class="about-closing reveal"><p>Crear con propósito, con estrategia y con corazón.</p></div>
+            <div class="about-closing reveal"><p>De la idea a la pieza, entre las dos.</p></div>
           </div>
         </section>
 
@@ -208,6 +208,16 @@
           </div>
         </section>
       </main>
+
+      <dialog class="project-dialog" data-project-dialog aria-labelledby="project-dialog-title">
+        <div class="project-dialog__surface">
+          <div class="project-dialog__header">
+            <div><p class="eyebrow eyebrow--ochre">Reel completo</p><h2 id="project-dialog-title" data-project-dialog-title></h2></div>
+            <button class="project-dialog__close" type="button" aria-label="Cerrar reel" data-project-dialog-close>×</button>
+          </div>
+          <div class="project-dialog__video-wrap"><video data-project-dialog-video controls playsinline preload="metadata"></video></div>
+        </div>
+      </dialog>
 
       <footer class="site-footer">
         <div class="container footer-inner">

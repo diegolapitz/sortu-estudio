@@ -137,6 +137,44 @@ function setupPortfolioCursor() {
   });
 }
 
+function setupProjectDialog() {
+  const dialog = document.querySelector('[data-project-dialog]');
+  const closeButton = document.querySelector('[data-project-dialog-close]');
+  const title = document.querySelector('[data-project-dialog-title]');
+  const video = document.querySelector('[data-project-dialog-video]');
+  const triggers = $$('[data-project-open]');
+  if (!dialog || !closeButton || !title || !video || !triggers.length) return;
+
+  let opener = null;
+  const close = () => dialog.close();
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      opener = trigger;
+      title.textContent = trigger.dataset.projectTitle;
+      video.src = trigger.dataset.projectSrc;
+      dialog.showModal();
+      safePlay(video);
+    });
+  });
+
+  closeButton.addEventListener('click', close);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) close();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || !dialog.open) return;
+    event.preventDefault();
+    close();
+  });
+  dialog.addEventListener('close', () => {
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+    opener?.focus();
+  });
+}
+
 function setupParallax() {
   if (prefersReducedMotion) return;
   const elements = $$('[data-parallax]');
@@ -203,6 +241,7 @@ observeVideos();
 setupHeroVideo();
 setupServices();
 setupPortfolioCursor();
+setupProjectDialog();
 setupParallax();
 setupContactForm();
 window.addEventListener('load', () => window.setTimeout(alignInitialAnchor, 0), { once: true });
