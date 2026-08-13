@@ -1,0 +1,208 @@
+import './styles.css';
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
+
+function revealOnScroll() {
+  if (prefersReducedMotion) {
+    $$('.reveal').forEach((element) => element.classList.add('is-visible'));
+    return;
+  }
+
+  const show = (element) => {
+    element.classList.add('is-visible');
+    observer.unobserve(element);
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      show(entry.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+  $$('.reveal').forEach((element, index) => {
+    element.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 70}ms`);
+    observer.observe(element);
+  });
+
+  // Some embedded browsers initialize IntersectionObserver after the first
+  // paint. This viewport sweep makes the first hero reveal deterministic.
+  const sweep = () => {
+    $$('.reveal:not(.is-visible)').forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.94 && rect.bottom > 0) show(element);
+    });
+  };
+  requestAnimationFrame(() => requestAnimationFrame(sweep));
+  window.setTimeout(sweep, 420);
+  document.addEventListener('scroll', sweep, { passive: true, capture: true });
+  window.addEventListener('resize', sweep, { passive: true });
+}
+
+function syncHeaderLogo() {
+  const hero = document.querySelector('.hero');
+  const headerLogo = document.querySelector('[data-header-logo]');
+  if (!hero || !headerLogo) return;
+  const update = () => headerLogo.classList.toggle('is-visible', hero.getBoundingClientRect().bottom < 135);
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+}
+
+function setupMenu() {
+  const button = document.querySelector('[data-menu-button]');
+  const menu = document.querySelector('[data-mobile-menu]');
+  if (!button || !menu) return;
+  const close = () => {
+    button.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('is-open');
+  };
+  button.addEventListener('click', () => {
+    const next = button.getAttribute('aria-expanded') !== 'true';
+    button.setAttribute('aria-expanded', String(next));
+    menu.classList.toggle('is-open', next);
+  });
+  $$('a', menu).forEach((link) => link.addEventListener('click', close));
+}
+
+function safePlay(video) {
+  if (!video || prefersReducedMotion) return;
+  video.play().catch(() => {});
+}
+
+function observeVideos() {
+  const videos = $$('video');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(({ target, isIntersecting, intersectionRatio }) => {
+      if (isIntersecting && intersectionRatio > 0.25) safePlay(target);
+      else target.pause();
+    });
+  }, { threshold: [0, 0.25, 0.75] });
+  videos.forEach((video) => observer.observe(video));
+}
+
+function setupHeroVideo() {
+  const frame = document.querySelector('[data-video-frame]');
+  const button = document.querySelector('[data-video-toggle]');
+  const video = frame?.querySelector('video');
+  if (!video || !button) return;
+
+  const update = () => {
+    const paused = video.paused;
+    frame.classList.toggle('is-paused', paused);
+    button.setAttribute('aria-label', paused ? 'Reproducir reel' : 'Pausar reel');
+  };
+  button.addEventListener('click', () => (video.paused ? safePlay(video) : video.pause()));
+  video.addEventListener('play', update);
+  video.addEventListener('pause', update);
+  update();
+}
+
+function setupServices() {
+  const rows = $$('[data-service]');
+  const videos = $$('[data-service-video]');
+  const caption = document.querySelector('[data-service-caption]');
+  if (!rows.length) return;
+
+  const activate = (index) => {
+    rows.forEach((row) => row.classList.toggle('is-active', row.dataset.service === String(index)));
+    videos.forEach((video) => {
+      const active = video.dataset.serviceVideo === String(index);
+      video.classList.toggle('is-active', active);
+      if (active) safePlay(video); else video.pause();
+    });
+    caption.textContent = rows[index].querySelector('.service-row__heading').childNodes[0].textContent.trim();
+  };
+  rows.forEach((row) => {
+    const activateRow = () => activate(row.dataset.service);
+    row.addEventListener('mouseenter', activateRow);
+    row.addEventListener('focus', activateRow);
+    row.addEventListener('click', activateRow);
+  });
+}
+
+function setupPortfolioCursor() {
+  if (prefersReducedMotion || !window.matchMedia('(pointer: fine)').matches) return;
+  const cursor = document.querySelector('.portfolio-cursor');
+  const projects = $$('[data-project]');
+  if (!cursor || !projects.length) return;
+  window.addEventListener('pointermove', (event) => {
+    cursor.style.setProperty('--cursor-x', `${event.clientX}px`);
+    cursor.style.setProperty('--cursor-y', `${event.clientY}px`);
+  }, { passive: true });
+  projects.forEach((project) => {
+    const video = project.querySelector('video');
+    project.addEventListener('mouseenter', () => { project.classList.add('is-hovered'); cursor.classList.add('is-active'); safePlay(video); });
+    project.addEventListener('mouseleave', () => { project.classList.remove('is-hovered'); cursor.classList.remove('is-active'); });
+  });
+}
+
+function setupParallax() {
+  if (prefersReducedMotion) return;
+  const elements = $$('[data-parallax]');
+  if (!elements.length) return;
+  let ticking = false;
+  const update = () => {
+    const viewportMiddle = window.innerHeight / 2;
+    elements.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      const strength = Number(element.dataset.parallax || 0);
+      const progress = (rect.top + rect.height / 2 - viewportMiddle) / window.innerHeight;
+      element.style.setProperty('--parallax-y', `${Math.round(-progress * strength * window.innerHeight)}px`);
+    });
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
+}
+
+function setupContactForm() {
+  const form = document.querySelector('[data-contact-form]');
+  const shell = document.querySelector('[data-form-shell]');
+  const success = document.querySelector('[data-contact-success]');
+  if (!form || !shell || !success) return;
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const values = Object.fromEntries(new FormData(form));
+    const subject = `Consulta web — ${values.nombre}`;
+    const body = [
+      `Nombre: ${values.nombre}`,
+      `Empresa o marca: ${values.empresa || '—'}`,
+      `Email o teléfono: ${values.contacto}`,
+      '',
+      'Mensaje:',
+      values.mensaje || '—',
+    ].join('\n');
+    window.location.href = `mailto:hola@estudiosortu.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    form.hidden = true;
+    success.hidden = false;
+    shell.classList.add('is-sent');
+  });
+}
+
+function alignInitialAnchor() {
+  if (!window.location.hash) return;
+  const target = document.querySelector(window.location.hash);
+  if (!target) return;
+  const header = document.querySelector('.site-header');
+  const offset = (header?.getBoundingClientRect().height || 78) + 10;
+  window.scrollTo(0, window.scrollY + target.getBoundingClientRect().top - offset);
+}
+
+document.querySelector('[data-year]').textContent = new Date().getFullYear();
+revealOnScroll();
+syncHeaderLogo();
+setupMenu();
+observeVideos();
+setupHeroVideo();
+setupServices();
+setupPortfolioCursor();
+setupParallax();
+setupContactForm();
+window.addEventListener('load', () => window.setTimeout(alignInitialAnchor, 0), { once: true });

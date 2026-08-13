@@ -1,0 +1,8 @@
+/* Sortu Estudio — webfonts.
+   SUSTITUCIÓN: el manual describe las familias ("sans-serif humanista" / "sans-serif
+   geométrica") pero no las nombra, y sus especímenes están compuestos en la fuente de
+   la plantilla de Canva (Palanquin Dark), no en la fuente de marca real.
+   - Display: Source Sans 3 — el match más cercano a las letras del wordmark del logo.
+   - Body:    Jost — geométrica moderna, cubre Light/Regular/Medium/Bold.
+   Reemplazar por los archivos reales cuando estén disponibles. */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap");

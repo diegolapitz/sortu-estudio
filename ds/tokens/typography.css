@@ -1,0 +1,41 @@
+:root{
+--font-display:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+--font-body:"Jost","Century Gothic",system-ui,sans-serif;
+--font-mono:ui-monospace,"SFMono-Regular",Menlo,monospace;
+
+--weight-light:300;
+--weight-regular:400;
+--weight-medium:500;
+--weight-semibold:600;
+--weight-bold:700;
+
+/* Escala tipográfica — razón ~1.25, redondeada a enteros */
+--text-3xs:11px;
+--text-2xs:12px;
+--text-xs:13px;
+--text-sm:15px;
+--text-base:17px;
+--text-lg:19px;
+--text-xl:22px;
+--text-2xl:27px;
+--text-3xl:34px;
+--text-4xl:44px;
+--text-5xl:58px;
+--text-6xl:76px;
+--text-7xl:96px;
+
+--leading-tight:1.06;
+--leading-snug:1.18;
+--leading-heading:1.28;
+--leading-normal:1.55;
+--leading-relaxed:1.72;
+
+--tracking-tighter:-0.022em;
+--tracking-tight:-0.012em;
+--tracking-normal:0;
+--tracking-wide:0.04em;
+--tracking-wider:0.09em;
+--tracking-widest:0.16em;
+/* Interletrado exacto del wordmark del logo */
+--tracking-wordmark:0.055em;
+}

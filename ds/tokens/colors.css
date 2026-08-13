@@ -1,0 +1,81 @@
+:root{
+/* ── Paleta principal (manual, pág. 13) ───────────────────────── */
+--sortu-terracota:#C75B3B;
+--sortu-ocre:#E8A838;
+--sortu-azul:#2B5DA6;
+
+/* ── Paleta complementaria (manual, pág. 14) ──────────────────── */
+--sortu-carmesi:#B22222;
+--sortu-verde:#2D5A27;
+--sortu-crema:#F5EDD6;
+
+/* ── Azul cobalto profundo — fondo de la versión inversa (pág. 7) */
+--sortu-azul-profundo:#1B3A8C;
+
+/* ── Colores muestreados de los collages. Aparecen en el artwork
+      pero no están tabulados en el manual. Usar para ilustración,
+      nunca para el logo. ───────────────────────────────────────── */
+--sortu-coral:#E07A5A;
+--sortu-rosa:#F09C90;
+--sortu-verde-logo:#2D5E3A;
+--sortu-verde-profundo:#17392F;
+--sortu-salvia:#A8BCB0;
+--sortu-crema-clara:#FCF0D8;
+--sortu-azul-collage:#184878;
+
+/* ── Neutrales cálidos, derivados del crema ──────────────────── */
+--ink-900:#1C1E1B;
+--ink-700:#494D46;
+--ink-500:#7B7E74;
+--ink-300:#B9BBB1;
+--ink-200:#D7D5C9;
+--ink-100:#E9E5D9;
+--paper:#FFFFFF;
+
+/* ── Alias semánticos ────────────────────────────────────────── */
+--surface-page:var(--sortu-crema);
+--surface-card:var(--paper);
+--surface-sunken:var(--sortu-crema-clara);
+--surface-dark:var(--sortu-azul-profundo);
+--surface-dark-alt:var(--sortu-verde-profundo);
+--surface-accent:var(--sortu-ocre);
+
+--text-heading:var(--ink-900);
+--text-body:var(--ink-700);
+--text-muted:var(--ink-500);
+--text-inverse:var(--sortu-crema);
+--text-brand:var(--sortu-verde);
+--text-link:var(--sortu-terracota);
+--text-link-hover:var(--sortu-carmesi);
+
+--border-subtle:var(--ink-200);
+--border-strong:var(--ink-900);
+--border-brand:var(--sortu-terracota);
+
+--action-primary:var(--sortu-terracota);
+--action-primary-hover:#B44F32;
+--action-primary-active:#9E4529;
+--action-secondary:var(--sortu-azul);
+--action-secondary-hover:#24519A;
+--action-neutral:var(--ink-900);
+
+--focus-ring:var(--sortu-azul);
+
+--status-success:var(--sortu-verde);
+--status-warning:var(--sortu-ocre);
+--status-danger:var(--sortu-carmesi);
+--status-info:var(--sortu-azul);
+}
+
+/* Bloques sobre fondo oscuro: invierten los alias de texto/borde. */
+.sortu-on-dark{
+--surface-card:rgba(255,255,255,.07);
+--text-heading:var(--sortu-crema);
+--text-body:rgba(245,237,214,.82);
+--text-muted:rgba(245,237,214,.58);
+--text-link:var(--sortu-ocre);
+--text-link-hover:#F3C169;
+--border-subtle:rgba(245,237,214,.20);
+--border-strong:var(--sortu-crema);
+--focus-ring:var(--sortu-ocre);
+}

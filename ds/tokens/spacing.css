@@ -1,0 +1,33 @@
+:root{
+--space-0:0;
+--space-1:2px;
+--space-2:4px;
+--space-3:6px;
+--space-4:8px;
+--space-5:12px;
+--space-6:16px;
+--space-7:20px;
+--space-8:24px;
+--space-9:32px;
+--space-10:40px;
+--space-11:48px;
+--space-12:64px;
+--space-13:80px;
+--space-14:96px;
+--space-15:128px;
+--space-16:160px;
+
+/* Ritmo de página */
+--gutter:24px;
+--gutter-lg:48px;
+--container-sm:640px;
+--container-md:880px;
+--container-lg:1140px;
+--container-xl:1360px;
+--section-y:var(--space-14);
+--section-y-sm:var(--space-12);
+
+/* Área de respeto del logo = altura de la "S" del isotipo (manual, pág. 9) */
+--logo-clearspace:1em;
+--logo-min-width:80px;
+}

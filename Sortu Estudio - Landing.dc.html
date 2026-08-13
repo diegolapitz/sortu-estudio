@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sortu Estudio — Comunicación y contenido</title>
+<link rel="stylesheet" href="ds/styles.css">
+<script src="./image-slot.js"></script>
+<script src="./media-slot.js"></script>
+<style>
+@font-face{font-family:"Eastman Grotesque";src:url("assets/fonts/EastmanGrotesque-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Eastman Grotesque";src:url("assets/fonts/EastmanGrotesque-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Eastman Grotesque";src:url("assets/fonts/EastmanGrotesque-Italic.otf") format("opentype");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Eastman Grotesque";src:url("assets/fonts/EastmanGrotesque-Medium.otf") format("opentype");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Eastman Grotesque";src:url("assets/fonts/EastmanGrotesque-DemiBold.otf") format("opentype");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Eastman Grotesque";src:url("assets/fonts/EastmanGrotesque-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+:root{
+--font-display:"Eastman Grotesque",system-ui,sans-serif;
+--font-body:"Eastman Grotesque",system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--surface-page)}
+@keyframes sortuDriftA{0%,100%{transform:translate3d(0,0,0) rotate(-8deg) scale(1)}33%{transform:translate3d(52px,-64px,0) rotate(4deg) scale(1.06)}66%{transform:translate3d(-38px,-26px,0) rotate(-14deg) scale(.97)}}
+@keyframes sortuDriftB{0%,100%{transform:translate3d(0,0,0) rotate(6deg) scale(1)}50%{transform:translate3d(-60px,54px,0) rotate(-8deg) scale(1.07)}}
+@keyframes sortuDriftC{0%,100%{transform:translate3d(0,0,0) rotate(0deg) scale(1)}33%{transform:translate3d(-46px,-58px,0) rotate(9deg) scale(1.08)}66%{transform:translate3d(44px,-22px,0) rotate(-7deg) scale(.98)}}
+@keyframes sortuTicker{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@keyframes sortuSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@media (max-width:1080px){
+[data-stack]{grid-template-columns:1fr!important;gap:var(--space-10)!important}
+[data-tilewrap]{grid-column:span 6!important;margin-top:0!important}
+[data-shift]{margin:0!important}
+[data-badge]{display:none!important}
+[data-svcvisual]{display:none!important}
+[data-duo]{grid-template-columns:1fr!important;gap:var(--space-13)!important}
+[data-portrait]{width:100%!important;max-width:420px!important;justify-self:center!important}
+[data-bigname]{font-size:clamp(46px,12vw,84px)!important}
+}
+@media (max-width:980px){
+[data-navlinks]{display:none!important}
+[data-menubtn]{display:inline-flex!important}
+[data-hidesm]{display:none!important}
+}
+@media (max-width:620px){
+[data-pad]{padding-left:var(--gutter)!important;padding-right:var(--gutter)!important}
+[data-tilewrap]{grid-column:span 12!important}
+[data-tilewrap] [data-tile]{aspect-ratio:4/3!important}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+[data-ambient],[data-ticker],[data-spin]{animation:none!important}
+}
+</style>
+</helmet>
+
+<div style="background:var(--surface-page);overflow-x:clip;position:relative">
+
+<div data-cursor style="position:fixed;left:0;top:0;z-index:90;pointer-events:none;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:var(--radius-circle);background:var(--sortu-ocre);color:var(--ink-900);display:flex;align-items:center;justify-content:center;font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;transform:translate3d(-300px,-300px,0) scale(0);transition:transform 320ms var(--ease-soft),opacity 220ms var(--ease-out);opacity:0">Ver</div>
+
+<header style="position:sticky;top:0;z-index:60;background:rgba(245,237,214,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
+  <div data-pad style="max-width:var(--container-xl);margin:0 auto;padding:var(--space-5) var(--gutter-lg);display:flex;align-items:center;justify-content:space-between;gap:var(--space-8)">
+    <a href="#top" data-navlogo style="display:flex;align-items:center;border:none;text-decoration:none;opacity:0;transition:opacity 320ms var(--ease-out)">
+      <span style="display:flex;flex-direction:column;align-items:center;gap:8px"><img src="assets/brand/iso-sortu.png" alt="Sortu Estudio" style="height:53px;width:auto;display:block"><img src="assets/brand/wordmark-sortu.svg" alt="" style="width:87px;display:block"></span>
+    </a>
+    <nav data-navlinks style="display:flex;align-items:center;gap:var(--space-9)">
+      <a href="#servicios" style="font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--ink-700);border:none;text-decoration:none">Servicios</a>
+      <a href="#portfolio" style="font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--ink-700);border:none;text-decoration:none">Proyectos</a>
+      <a href="#nosotras" style="font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--ink-700);border:none;text-decoration:none">Nosotras</a>
+      <a href="#contacto" style="display:inline-flex;align-items:center;gap:8px;background:var(--action-primary);color:var(--sortu-crema);padding:12px 24px;border-radius:var(--radius-pill);font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;border:none;text-decoration:none;transition:background 140ms var(--ease-out),transform 220ms var(--ease-soft),box-shadow 140ms var(--ease-out)" style-hover="background:var(--action-primary-hover);transform:translateY(-1px);box-shadow:var(--shadow-sm)">Hablemos</a>
+    </nav>
+    <button data-menubtn type="button" onClick="{{ toggleMenu }}" aria-label="Menú" style="display:none;align-items:center;justify-content:center;width:46px;height:46px;border-radius:var(--radius-pill);border:1px solid var(--border-subtle);background:transparent;color:var(--ink-900);cursor:pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18"></path><path d="M3 12h18"></path><path d="M3 18h18"></path></svg>
+    </button>
+  </div>
+  <div data-mobilemenu style="display:none;border-top:1px solid var(--border-subtle);background:var(--sortu-crema);padding:var(--space-6) var(--gutter);flex-direction:column;gap:var(--space-5)">
+    <a href="#servicios" data-menulink style="font-family:var(--font-body);font-size:var(--text-lg);color:var(--ink-900);border:none;text-decoration:none">Servicios</a>
+    <a href="#portfolio" data-menulink style="font-family:var(--font-body);font-size:var(--text-lg);color:var(--ink-900);border:none;text-decoration:none">Proyectos</a>
+    <a href="#nosotras" data-menulink style="font-family:var(--font-body);font-size:var(--text-lg);color:var(--ink-900);border:none;text-decoration:none">Nosotras</a>
+    <a href="#contacto" data-menulink style="font-family:var(--font-body);font-size:var(--text-lg);color:var(--sortu-terracota);border:none;text-decoration:none">Hablemos</a>
+  </div>
+</header>
+
+<section id="top" data-pad style="position:relative;max-width:var(--container-xl);margin:0 auto;padding:var(--space-12) var(--gutter-lg) var(--space-13);scroll-margin-top:110px">
+  <div data-sp="0.14" data-hidesm style="position:absolute;right:-90px;top:46%;width:300px;z-index:0;pointer-events:none">
+    <img data-ambient src="assets/brand/shape-ocre.png" alt="" style="width:100%;display:block;animation:sortuDriftA 24s var(--ease-in-out) infinite">
+  </div>
+
+  <div data-sp="0.24" style="position:absolute;left:56%;bottom:4%;width:min(74px,13vw);z-index:1;pointer-events:none">
+    <img data-ambient src="assets/brand/shape2-azul2.png" alt="" style="width:100%;display:block;animation:sortuDriftA 17s var(--ease-in-out) infinite">
+  </div>
+  <div data-sp="0.09" style="position:absolute;right:-140px;bottom:-120px;width:min(300px,44vw);z-index:0;pointer-events:none">
+    <img data-ambient src="assets/brand/shape-coral.png" alt="" style="width:100%;display:block;animation:sortuDriftC 22s var(--ease-in-out) infinite">
+  </div>
+
+  <div data-reveal style="position:relative;z-index:2;display:flex;align-items:center;gap:var(--space-7);flex-wrap:wrap;margin-bottom:var(--space-8)">
+    <span style="display:flex;flex-direction:column;align-items:center;gap:15px"><img src="assets/brand/iso-sortu.png" alt="Sortu Estudio" style="height:102px;width:auto;display:block"><img src="assets/brand/wordmark-sortu.svg" alt="" style="width:169px;display:block"></span>
+    <span style="font-family:var(--font-body);font-size:var(--text-2xs);font-weight:var(--weight-medium);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--sortu-terracota);max-width:14ch;line-height:var(--leading-relaxed)">Estudio de comunicación y contenido</span>
+  </div>
+  <h1 data-reveal data-mask style="position:relative;z-index:2;font-size:clamp(54px,9.4vw,132px);line-height:.94;letter-spacing:var(--tracking-tighter);font-weight:var(--weight-semibold);max-width:13ch">Ideas que se producen.</h1>
+
+  <div data-stack style="position:relative;z-index:2;margin-top:var(--space-12);display:grid;grid-template-columns:.82fr 1.18fr;gap:var(--space-12);align-items:end">
+    <div style="display:flex;flex-direction:column;gap:var(--space-7)">
+      <p data-reveal style="font-size:var(--text-lg);line-height:var(--leading-relaxed);max-width:40ch;color:var(--text-body)">Definimos qué comunicar y lo convertimos en piezas concretas. Estrategia, contenido y producción audiovisual, en el mismo lugar.</p>
+      <div data-reveal style="display:flex;flex-wrap:wrap;gap:var(--space-5)">
+        <a href="#contacto" style="display:inline-flex;align-items:center;gap:10px;background:var(--action-primary);color:var(--sortu-crema);padding:16px 30px;border-radius:var(--radius-pill);font-family:var(--font-body);font-size:var(--text-sm);letter-spacing:var(--tracking-wider);text-transform:uppercase;border:none;text-decoration:none;white-space:nowrap;transition:background 140ms var(--ease-out),transform 220ms var(--ease-soft),box-shadow 140ms var(--ease-out)" style-hover="background:var(--action-primary-hover);transform:translateY(-1px);box-shadow:var(--shadow-sm)">
+          Hablemos
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+        <a href="#portfolio" style="display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--ink-900);padding:16px 30px;border-radius:var(--radius-pill);font-family:var(--font-body);font-size:var(--text-sm);letter-spacing:var(--tracking-wider);text-transform:uppercase;border:1px solid var(--border-strong);text-decoration:none;white-space:nowrap;transition:background 140ms var(--ease-out),transform 220ms var(--ease-soft)" style-hover="background:rgba(28,30,27,.06);transform:translateY(-1px)">Ver proyectos</a>
+      </div>
+    </div>
+
+    <div data-reveal data-mask style="position:relative">
+      <div data-tilewrap style="position:relative;aspect-ratio:16/9;border-radius:var(--radius-lg);overflow:hidden;background:var(--sortu-azul-collage);box-shadow:var(--shadow-paper)">
+        <div data-media style="position:absolute;inset:0;transition:transform 900ms var(--ease-soft)">
+          <media-slot src="videos/reel" label="Reel del estudio"></media-slot>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a href="#servicios" style="display:block;position:relative;z-index:5;background:var(--surface-page);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);overflow:hidden;padding:var(--space-5) 0;text-decoration:none;color:inherit;border-left:none;border-right:none">
+  <div data-ticker style="display:flex;width:max-content;align-items:center;gap:var(--space-8);animation:sortuTicker 74s linear infinite">
+    <span style="font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Producción audiovisual</span>
+    <span style="width:5px;height:5px;border-radius:50%;background:var(--sortu-terracota);flex:none"></span>
+    <span style="font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Comunicación digital</span>
+    <span style="width:5px;height:5px;border-radius:50%;background:var(--sortu-terracota);flex:none"></span>
+    <span style="font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Estrategia y contenido</span>
+    <span style="width:5px;height:5px;border-radius:50%;background:var(--sortu-terracota);flex:none"></span>
+    <span style="font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Contenido para marcas</span>
+    <span style="width:5px;height:5px;border-radius:50%;background:var(--sortu-terracota);flex:none"></span>
+    <span style="font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Producción audiovisual</span>
+    <span style="width:5px;height:5px;border-radius:50%;background:var(--sortu-terracota);flex:none"></span>
+    <span style="font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Comunicación digital</span>
+    <span style="width:5px;height:5px;border-radius:50%;background:var(--sortu-terracota);flex:none"></span>
+    <span style="font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Estrategia y contenido</span>
+    <span style="width:5px;height:5px;border-radius:50%;background:var(--sortu-terracota);flex:none"></span>
+    <span style="font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Contenido para marcas</span>
+    <span style="width:5px;height:5px;border-radius:50%;background:var(--sortu-terracota);flex:none"></span>
+  </div>
+</a>
+
+<section id="servicios" style="position:relative;background:var(--sortu-crema-clara);scroll-margin-top:110px;overflow:clip">
+  <div data-sp="0.1" data-hidesm style="position:absolute;right:-110px;top:-60px;width:230px;z-index:0;pointer-events:none;opacity:.9">
+    <img data-ambient src="assets/brand/shape-terracota.png" alt="" style="width:100%;display:block;animation:sortuDriftB 32s var(--ease-in-out) infinite">
+  </div>
+  <div data-pad style="position:relative;z-index:1;max-width:var(--container-xl);margin:0 auto;padding:var(--space-14) var(--gutter-lg)">
+    <div data-stack style="display:grid;grid-template-columns:1fr .9fr;gap:var(--space-9);align-items:end;margin-bottom:var(--space-12)">
+      <div style="display:flex;flex-direction:column;gap:var(--space-5)">
+        <span data-reveal style="font-family:var(--font-body);font-size:var(--text-2xs);font-weight:var(--weight-medium);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--sortu-terracota)">Qué hacemos</span>
+        <h2 data-reveal data-mask style="font-size:clamp(32px,4.2vw,52px);line-height:var(--leading-snug);letter-spacing:var(--tracking-tight);max-width:16ch">Estrategia y producción, en el mismo lugar</h2>
+      </div>
+      <p data-reveal style="font-size:var(--text-lg);line-height:var(--leading-relaxed);color:var(--text-body);max-width:48ch">Podés sumarnos para una pieza puntual o para toda la comunicación de tu marca. Empezamos siempre por la misma pregunta: qué necesitás comunicar, y a quién.</p>
+    </div>
+
+    <div data-stack style="display:grid;grid-template-columns:1.2fr .8fr;gap:var(--space-12);align-items:start">
+      <div style="display:flex;flex-direction:column">
+        <div data-svc data-index="0" data-reveal style="border-top:1px solid var(--border-subtle);padding:var(--space-9) 0">
+          <div style="display:flex;align-items:baseline;gap:var(--space-5)">
+            <h3 data-svctitle style="font-size:clamp(24px,2.6vw,34px);letter-spacing:var(--tracking-tight);transition:transform 220ms var(--ease-soft),color 140ms var(--ease-out)">Producción audiovisual</h3>
+            <svg data-svcarrow width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sortu-terracota)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0;transform:translateX(-8px);transition:opacity 140ms var(--ease-out),transform 220ms var(--ease-soft)"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+          </div>
+          <p style="margin-top:var(--space-5);font-size:var(--text-base);line-height:var(--leading-relaxed);color:var(--text-body);max-width:46ch">Concepto, dirección, filmación y post. Desde una pieza institucional hasta el contenido mensual de una marca.</p>
+        </div>
+        <div data-svc data-index="1" data-reveal style="border-top:1px solid var(--border-subtle);padding:var(--space-9) 0">
+          <div style="display:flex;align-items:baseline;gap:var(--space-5)">
+            <h3 data-svctitle style="font-size:clamp(24px,2.6vw,34px);letter-spacing:var(--tracking-tight);transition:transform 220ms var(--ease-soft),color 140ms var(--ease-out)">Comunicación digital</h3>
+            <svg data-svcarrow width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sortu-terracota)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0;transform:translateX(-8px);transition:opacity 140ms var(--ease-out),transform 220ms var(--ease-soft)"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+          </div>
+          <p style="margin-top:var(--space-5);font-size:var(--text-base);line-height:var(--leading-relaxed);color:var(--text-body);max-width:46ch">Gestión y desarrollo de los canales digitales: qué se publica, cuándo y con qué criterio.</p>
+        </div>
+        <div data-svc data-index="2" data-reveal style="border-top:1px solid var(--border-subtle);padding:var(--space-9) 0">
+          <div style="display:flex;align-items:baseline;gap:var(--space-5)">
+            <h3 data-svctitle style="font-size:clamp(24px,2.6vw,34px);letter-spacing:var(--tracking-tight);transition:transform 220ms var(--ease-soft),color 140ms var(--ease-out)">Estrategia y contenido</h3>
+            <svg data-svcarrow width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sortu-terracota)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0;transform:translateX(-8px);transition:opacity 140ms var(--ease-out),transform 220ms var(--ease-soft)"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+          </div>
+          <p style="margin-top:var(--space-5);font-size:var(--text-base);line-height:var(--leading-relaxed);color:var(--text-body);max-width:46ch">Planificación, concepto y campañas alineadas a los objetivos de cada marca. El plan antes de la cámara.</p>
+        </div>
+        <div data-svc data-index="3" data-reveal style="border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:var(--space-9) 0">
+          <div style="display:flex;align-items:baseline;gap:var(--space-5)">
+            <h3 data-svctitle style="font-size:clamp(24px,2.6vw,34px);letter-spacing:var(--tracking-tight);transition:transform 220ms var(--ease-soft),color 140ms var(--ease-out)">Contenido para marcas</h3>
+            <svg data-svcarrow width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sortu-terracota)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0;transform:translateX(-8px);transition:opacity 140ms var(--ease-out),transform 220ms var(--ease-soft)"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+          </div>
+          <p style="margin-top:var(--space-5);font-size:var(--text-base);line-height:var(--leading-relaxed);color:var(--text-body);max-width:46ch">Fotografía, video, piezas digitales y cobertura de eventos, adaptados a cada plataforma.</p>
+        </div>
+      </div>
+
+      <div data-svcvisual style="position:sticky;top:150px;display:flex;flex-direction:column;gap:var(--space-5)">
+        <div style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-2xl);overflow:hidden;background:transparent">
+          <div data-svcmedia data-for="0" style="position:absolute;inset:0;opacity:1;transition:opacity 520ms var(--ease-out)">
+            <media-slot tone="dark" src="videos/servicio-audiovisual" label="Producción audiovisual"></media-slot>
+          </div>
+          <div data-svcmedia data-for="1" style="position:absolute;inset:0;opacity:0;transition:opacity 520ms var(--ease-out)">
+            <media-slot tone="dark" src="videos/servicio-digital" label="Comunicación digital"></media-slot>
+          </div>
+          <div data-svcmedia data-for="2" style="position:absolute;inset:0;opacity:0;transition:opacity 520ms var(--ease-out)">
+            <media-slot tone="dark" src="videos/servicio-estrategia" label="Estrategia y contenido"></media-slot>
+          </div>
+          <div data-svcmedia data-for="3" style="position:absolute;inset:0;opacity:0;transition:opacity 520ms var(--ease-out)">
+            <media-slot tone="dark" src="videos/servicio-contenido" label="Contenido para marcas"></media-slot>
+          </div>
+        </div>
+        <span data-svccaption style="font-family:var(--font-body);font-size:var(--text-2xs);letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--text-muted);transition:opacity 220ms var(--ease-out)">Producción audiovisual</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" style="position:relative;background:var(--sortu-azul-profundo);padding:var(--space-13) 0 var(--space-14);scroll-margin-top:110px;overflow:clip">
+  <div data-sp="0.13" style="position:absolute;left:-120px;top:44%;width:min(300px,48vw);z-index:0;pointer-events:none;opacity:.85">
+    <img data-ambient src="assets/brand/shape-verde.png" alt="" style="width:100%;display:block;animation:sortuDriftC 38s var(--ease-in-out) infinite">
+  </div>
+
+  <div data-pad style="position:relative;z-index:1;max-width:var(--container-xl);margin:0 auto;padding:0 var(--gutter-lg)">
+    <div data-stack style="display:grid;grid-template-columns:1fr .8fr;gap:var(--space-9);align-items:end;margin-bottom:var(--space-11)">
+      <div style="display:flex;flex-direction:column;gap:var(--space-5)">
+        <span data-reveal style="font-family:var(--font-body);font-size:var(--text-2xs);font-weight:var(--weight-medium);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--sortu-ocre)">Proyectos</span>
+        <h2 data-reveal data-mask style="font-size:clamp(32px,4.2vw,52px);line-height:var(--leading-snug);letter-spacing:var(--tracking-tight);color:var(--sortu-crema);max-width:16ch">Algunas cosas que hicimos</h2>
+      </div>
+
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:var(--space-10) var(--space-7)">
+      <a href="#contacto" data-tilewrap data-reveal data-mask data-sp="-0.03" style="grid-column:span 7;text-decoration:none;border:none;color:inherit;display:block">
+        <div data-tile style="position:relative;overflow:hidden;border-radius:var(--radius-lg);aspect-ratio:16/9;background:var(--sortu-azul-collage)">
+          <div data-media style="position:absolute;inset:0;transition:transform 900ms var(--ease-soft)">
+            <media-slot src="videos/proyecto-1" label="Proyecto 01"></media-slot>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-top:var(--space-5)">
+          <h3 style="font-size:var(--text-xl);color:var(--sortu-crema);letter-spacing:var(--tracking-tight)">Proyecto 01</h3>
+          <span style="font-family:var(--font-body);font-size:var(--text-3xs);letter-spacing:var(--tracking-wider);text-transform:uppercase;color:rgba(245,237,214,.58)">Horizontal · 16:9</span>
+        </div>
+      </a>
+
+      <a href="#contacto" data-tilewrap data-reveal data-mask data-shift data-sp="0.05" style="grid-column:span 4;text-decoration:none;border:none;color:inherit;display:block;margin-top:var(--space-12)">
+        <div data-tile style="position:relative;overflow:hidden;border-radius:var(--radius-lg);aspect-ratio:3/4;background:var(--sortu-azul-collage)">
+          <div data-media style="position:absolute;inset:0;transition:transform 900ms var(--ease-soft)">
+            <media-slot src="videos/proyecto-2" label="Proyecto 02 · vertical"></media-slot>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-top:var(--space-5)">
+          <h3 style="font-size:var(--text-xl);color:var(--sortu-crema);letter-spacing:var(--tracking-tight)">Proyecto 02</h3>
+          <span style="font-family:var(--font-body);font-size:var(--text-3xs);letter-spacing:var(--tracking-wider);text-transform:uppercase;color:rgba(245,237,214,.58)">Vertical · 3:4</span>
+        </div>
+      </a>
+
+      <a href="#contacto" data-tilewrap data-reveal data-mask data-sp="0.04" style="grid-column:span 5;text-decoration:none;border:none;color:inherit;display:block">
+        <div data-tile style="position:relative;overflow:hidden;border-radius:var(--radius-lg);aspect-ratio:4/3;background:var(--sortu-azul-collage)">
+          <div data-media style="position:absolute;inset:0;transition:transform 900ms var(--ease-soft)">
+            <media-slot src="videos/proyecto-3" label="Proyecto 03"></media-slot>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-top:var(--space-5)">
+          <h3 style="font-size:var(--text-xl);color:var(--sortu-crema);letter-spacing:var(--tracking-tight)">Proyecto 03</h3>
+          <span style="font-family:var(--font-body);font-size:var(--text-3xs);letter-spacing:var(--tracking-wider);text-transform:uppercase;color:rgba(245,237,214,.58)">Fotografía · 4:3</span>
+        </div>
+      </a>
+
+      <a href="#contacto" data-tilewrap data-reveal data-mask data-shift data-sp="-0.04" style="grid-column:span 6;text-decoration:none;border:none;color:inherit;display:block;margin-top:var(--space-11)">
+        <div data-tile style="position:relative;overflow:hidden;border-radius:var(--radius-lg);aspect-ratio:16/10;background:var(--sortu-azul-collage)">
+          <div data-media style="position:absolute;inset:0;transition:transform 900ms var(--ease-soft)">
+            <media-slot src="videos/proyecto-4" label="Proyecto 04"></media-slot>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-top:var(--space-5)">
+          <h3 style="font-size:var(--text-xl);color:var(--sortu-crema);letter-spacing:var(--tracking-tight)">Proyecto 04</h3>
+          <span style="font-family:var(--font-body);font-size:var(--text-3xs);letter-spacing:var(--tracking-wider);text-transform:uppercase;color:rgba(245,237,214,.58)">Horizontal · 16:10</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="nosotras" style="position:relative;background:var(--surface-page);padding:var(--space-14) 0;overflow:clip;scroll-margin-top:110px">
+  <div data-pad style="position:relative;max-width:var(--container-lg);margin:0 auto;padding:0 var(--gutter-lg)">
+    <div style="display:flex;flex-direction:column;gap:var(--space-6);max-width:34ch;margin-bottom:var(--space-14)">
+      <span data-reveal style="font-family:var(--font-body);font-size:var(--text-2xs);font-weight:var(--weight-medium);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--sortu-verde)">Nosotras</span>
+      <h2 data-reveal data-mask style="font-size:clamp(32px,4.2vw,52px);line-height:var(--leading-snug);letter-spacing:var(--tracking-tight)">Somos dos, y trabajamos como una</h2>
+      <p data-reveal style="font-size:var(--text-lg);line-height:var(--leading-relaxed);color:var(--text-body);max-width:54ch">Sortu existe porque Guada y Martu combinan dos perfiles complementarios: estrategia, comunicación y producción. Las decisiones se toman entre las dos, siempre.</p>
+    </div>
+
+    <div style="position:relative">
+      <div data-duo style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:var(--space-13);align-items:start">
+        <div data-portrait data-reveal data-reveal-x="-1" style="position:relative;display:flex;flex-direction:column;gap:var(--space-7)">
+          <div style="display:flex;flex-direction:column;align-items:flex-start">
+            <span data-bigname style="font-family:var(--font-display);font-size:clamp(52px,6.6vw,92px);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-tighter);color:var(--sortu-verde);line-height:.92;position:relative;z-index:0;margin-bottom:-.30em;display:block;margin-left:-.04em">Martu</span>
+            <div data-mask style="position:relative;z-index:1;aspect-ratio:4/5;overflow:hidden;background:var(--sortu-crema-clara);box-shadow:var(--shadow-sm);width:100%;border-radius:var(--radius-blob)">
+              <image-slot id="sortu-martu" shape="rect" placeholder="Retrato de Martu (4:5)"></image-slot>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+            <span style="font-family:var(--font-body);font-size:var(--text-3xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--sortu-verde)">Estrategia y realización</span>
+            <p style="font-size:var(--text-base);line-height:var(--leading-relaxed);color:var(--text-body);max-width:34ch">Productora audiovisual enfocada en marketing estratégico. Piensa cada pieza para que la marca tenga una llegada orgánica y humana.</p>
+          </div>
+        </div>
+
+        <div data-portrait data-reveal data-reveal-x="1" style="position:relative;display:flex;flex-direction:column;gap:var(--space-7)">
+          <div style="display:flex;flex-direction:column;align-items:flex-end">
+            <span data-bigname style="font-family:var(--font-display);font-size:clamp(52px,6.6vw,92px);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-tighter);color:var(--sortu-verde);line-height:.92;position:relative;z-index:0;margin-bottom:-.30em;display:block;margin-right:-.04em">Guada</span>
+            <div data-mask style="position:relative;z-index:1;aspect-ratio:4/5;overflow:hidden;background:var(--sortu-crema-clara);box-shadow:var(--shadow-sm);width:100%;border-radius:var(--radius-blob-alt)">
+              <image-slot id="sortu-guada" shape="rect" placeholder="Retrato de Guada (4:5)"></image-slot>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);align-items:flex-end;text-align:right">
+            <span style="font-family:var(--font-body);font-size:var(--text-3xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--sortu-verde)">Comunicación digital</span>
+            <p style="font-size:var(--text-base);line-height:var(--leading-relaxed);color:var(--text-body);max-width:34ch">Productora audiovisual especializada en comunicación digital. Es el puente con los clientes y quien ordena procesos y tiempos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal style="position:relative;margin-top:var(--space-14);padding:var(--space-12) 0 var(--space-8);border-top:1px solid var(--border-subtle);display:flex;justify-content:center">
+      <p style="font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);line-height:var(--leading-snug);letter-spacing:var(--tracking-tight);color:var(--text-heading);max-width:22ch;text-align:center">Crear con propósito, con estrategia y con corazón.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" style="position:relative;background:var(--sortu-azul-profundo);scroll-margin-top:110px;overflow:clip">
+  <div data-sp="0.1" data-hidesm style="position:absolute;left:-130px;bottom:-90px;width:300px;z-index:0;opacity:.85;pointer-events:none">
+    <img data-ambient src="assets/brand/shape-coral.png" alt="" style="width:100%;display:block;animation:sortuDriftC 36s var(--ease-in-out) infinite">
+  </div>
+  <div data-pad style="position:relative;z-index:1;max-width:var(--container-xl);margin:0 auto;padding:var(--space-14) var(--gutter-lg)">
+    <div data-stack style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-12);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:var(--space-7)">
+        <span data-reveal style="font-family:var(--font-body);font-size:var(--text-2xs);font-weight:var(--weight-medium);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--sortu-ocre)">Contacto</span>
+        <h2 data-reveal data-mask style="font-size:clamp(32px,4.4vw,56px);line-height:var(--leading-snug);letter-spacing:var(--tracking-tight);color:var(--sortu-crema);max-width:15ch">¿Empezamos por saber qué querés contar?</h2>
+        <p data-reveal style="font-size:var(--text-lg);line-height:var(--leading-relaxed);color:rgba(245,237,214,.78);max-width:44ch">Contanos qué necesitás comunicar y armamos una primera conversación sin cargo.</p>
+        <div data-reveal style="display:flex;flex-direction:column;gap:var(--space-4);margin-top:var(--space-3)">
+          <a href="https://wa.me/5491100000000" style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);padding:var(--space-6) var(--space-7);border:1px solid rgba(245,237,214,.20);border-radius:var(--radius-lg);background:rgba(245,237,214,.07);color:var(--sortu-crema);text-decoration:none;transition:transform 220ms var(--ease-soft),background 140ms var(--ease-out)" style-hover="transform:translateY(-3px);background:rgba(245,237,214,.12)">
+            <span style="display:flex;align-items:center;gap:var(--space-5)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sortu-ocre)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span style="font-family:var(--font-body);font-size:var(--text-base)">WhatsApp · +54 11 0000-0000</span>
+            </span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(245,237,214,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+          </a>
+          <a href="mailto:hola@estudiosortu.com" style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);padding:var(--space-6) var(--space-7);border:1px solid rgba(245,237,214,.20);border-radius:var(--radius-lg);background:rgba(245,237,214,.07);color:var(--sortu-crema);text-decoration:none;transition:transform 220ms var(--ease-soft),background 140ms var(--ease-out)" style-hover="transform:translateY(-3px);background:rgba(245,237,214,.12)">
+            <span style="display:flex;align-items:center;gap:var(--space-5)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sortu-ocre)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+              <span style="font-family:var(--font-body);font-size:var(--text-base)">hola@estudiosortu.com</span>
+            </span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(245,237,214,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+          </a>
+          <a href="https://instagram.com/estudiosortu" style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);padding:var(--space-6) var(--space-7);border:1px solid rgba(245,237,214,.20);border-radius:var(--radius-lg);background:rgba(245,237,214,.07);color:var(--sortu-crema);text-decoration:none;transition:transform 220ms var(--ease-soft),background 140ms var(--ease-out)" style-hover="transform:translateY(-3px);background:rgba(245,237,214,.12)">
+            <span style="display:flex;align-items:center;gap:var(--space-5)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sortu-ocre)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+              <span style="font-family:var(--font-body);font-size:var(--text-base)">@estudiosortu</span>
+            </span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(245,237,214,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div data-reveal style="position:relative;border-radius:var(--radius-xl);overflow:hidden;background:var(--sortu-crema);box-shadow:var(--shadow-paper)">
+        <div style="position:relative;z-index:1;padding:var(--space-11) var(--space-10)">
+          <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:var(--space-6)">
+              <label style="display:flex;flex-direction:column;gap:var(--space-3)">
+                <span style="font-family:var(--font-body);font-size:var(--text-3xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--text-muted)">Nombre</span>
+                <input type="text" name="nombre" required style="font-family:var(--font-body);font-size:var(--text-base);color:var(--ink-900);background:var(--paper);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:14px 16px;outline:none">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:var(--space-3)">
+                <span style="font-family:var(--font-body);font-size:var(--text-3xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--text-muted)">Empresa o marca</span>
+                <input type="text" name="empresa" style="font-family:var(--font-body);font-size:var(--text-base);color:var(--ink-900);background:var(--paper);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:14px 16px;outline:none">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:var(--space-3)">
+                <span style="font-family:var(--font-body);font-size:var(--text-3xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--text-muted)">Email o teléfono</span>
+                <input type="text" name="contacto" required style="font-family:var(--font-body);font-size:var(--text-base);color:var(--ink-900);background:var(--paper);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:14px 16px;outline:none">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:var(--space-3)">
+                <span style="font-family:var(--font-body);font-size:var(--text-3xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--text-muted)">Contanos qué tenés en mente</span>
+                <textarea name="mensaje" rows="4" style="font-family:var(--font-body);font-size:var(--text-base);color:var(--ink-900);background:var(--paper);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:14px 16px;outline:none;resize:vertical"></textarea>
+              </label>
+              <button type="submit" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;margin-top:var(--space-3);background:var(--action-primary);color:var(--sortu-crema);border:none;padding:15px 30px;border-radius:var(--radius-pill);font-family:var(--font-body);font-size:var(--text-sm);letter-spacing:var(--tracking-wider);text-transform:uppercase;cursor:pointer;transition:background 140ms var(--ease-out),transform 220ms var(--ease-soft)" style-hover="background:var(--action-primary-hover);transform:translateY(-1px)">
+                Enviar
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </button>
+            </form>
+          </sc-if>
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:var(--space-6);padding:var(--space-9) 0">
+              <h3 style="font-size:var(--text-2xl);letter-spacing:var(--tracking-tight)">Gracias, ya nos llega.</h3>
+              <p style="font-size:var(--text-base);line-height:var(--leading-relaxed);color:var(--text-body);max-width:36ch">Te escribimos a la brevedad. Si es urgente, mandanos un WhatsApp.</p>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:var(--sortu-crema)">
+  <div data-pad style="max-width:var(--container-xl);margin:0 auto;padding:var(--space-10) var(--gutter-lg);display:flex;flex-wrap:wrap;gap:var(--space-9);align-items:center;justify-content:space-between">
+    <span style="display:flex;flex-direction:column;align-items:center;gap:13px"><img src="assets/brand/iso-sortu.png" alt="Sortu Estudio" style="height:87px;width:auto;display:block"><img src="assets/brand/wordmark-sortu.svg" alt="" style="width:144px;display:block"></span>
+    <nav style="display:flex;flex-wrap:wrap;gap:var(--space-7);font-family:var(--font-body);font-size:var(--text-xs);letter-spacing:var(--tracking-wider);text-transform:uppercase">
+      <a href="#servicios" style="color:var(--ink-700);border:none;text-decoration:none">Servicios</a>
+      <a href="#portfolio" style="color:var(--ink-700);border:none;text-decoration:none">Proyectos</a>
+      <a href="#nosotras" style="color:var(--ink-700);border:none;text-decoration:none">Nosotras</a>
+      <a href="#contacto" style="color:var(--ink-700);border:none;text-decoration:none">Contacto</a>
+      <a href="https://instagram.com/estudiosortu" style="color:var(--sortu-terracota);border:none;text-decoration:none">Instagram</a>
+    </nav>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-left:auto">
+      <a href="mailto:hola@estudiosortu.com" style="font-family:var(--font-body);font-size:var(--text-sm);color:var(--ink-700);border:none;text-decoration:none">hola@estudiosortu.com</a>
+      <span style="font-family:var(--font-body);font-size:var(--text-xs);color:var(--text-muted)">© 2026 Sortu Estudio</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;motionLevel&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;completo&quot;,&quot;sutil&quot;,&quot;ninguno&quot;],&quot;default&quot;:&quot;completo&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Movimiento&quot;}}">
+class Component extends DCLogic {
+  state = { sent: false };
+
+  get reduced() { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
+
+  get motion() {
+    const m = this.props.motionLevel ?? "completo";
+    return this.reduced ? "ninguno" : m;
+  }
+
+  componentDidMount() {
+    this.setupReveals();
+    this.setupScroll();
+    this.setupParallax();
+    this.setupServices();
+    this.setupTiles();
+    this.setupNavLogo();
+    document.querySelectorAll("[data-menulink]").forEach(a => a.addEventListener("click", () => this.closeMenu()));
+    if (this.motion === "ninguno") {
+      document.querySelectorAll("[data-ambient],[data-ticker],[data-spin]").forEach(el => { el.style.animation = "none"; });
+    } else if (this.motion === "sutil") {
+      document.querySelectorAll("[data-ambient]").forEach(el => { el.style.animationDuration = "52s"; });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._onMove) window.removeEventListener("mousemove", this._onMove);
+    if (this._onScroll) window.removeEventListener("scroll", this._onScroll);
+    if (this._onRevealScroll) {
+      document.removeEventListener("scroll", this._onRevealScroll, { capture: true });
+      window.removeEventListener("resize", this._onRevealScroll);
+    }
+    if (this._revealTimer) clearInterval(this._revealTimer);
+  }
+
+  setupReveals() {
+    const els = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (!els.length || this.reduced) return;
+    els.forEach((el, i) => {
+      const x = parseFloat(el.dataset.revealX || "0");
+      const d = Math.min(i % 4, 3) * 70;
+      const masked = el.hasAttribute("data-mask");
+      const fixed = el.hasAttribute("data-core") || el.hasAttribute("data-band");
+      el.style.opacity = masked ? "1" : "0";
+      if (!fixed) el.style.transform = x ? "translate3d(" + x * 46 + "px,10px,0)" : "translate3d(0,24px,0)";
+      if (el.hasAttribute("data-band")) { el.style.opacity = "1"; el.style.clipPath = "inset(0 100% 0 0)"; }
+      else if (masked) el.style.clipPath = "inset(0 0 100% 0)";
+      el.style.transition = el.hasAttribute("data-band")
+        ? "clip-path 1600ms cubic-bezier(.22,.61,.36,1) 120ms"
+        :
+        "opacity 700ms cubic-bezier(.22,.61,.36,1) " + d + "ms, transform 900ms cubic-bezier(.34,.80,.30,1) " + d +
+        "ms, clip-path 1000ms cubic-bezier(.34,.80,.30,1) " + d + "ms";
+    });
+    const show = el => {
+      el.style.opacity = "1";
+      if (!(el.hasAttribute("data-core") || el.hasAttribute("data-band"))) el.style.transform = "none";
+      el.style.clipPath = "inset(0 0 0 0)";
+    };
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { this._ioFired = true; show(e.target); this._io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -6% 0px", threshold: 0.05 });
+    els.forEach(el => this._io.observe(el));
+    const sweep = () => {
+      const h = window.innerHeight || 800;
+      els.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < h * 0.94 && r.bottom > 0) { show(el); this._io.unobserve(el); }
+      });
+    };
+    requestAnimationFrame(() => requestAnimationFrame(sweep));
+    setTimeout(sweep, 400);
+    let pending = false;
+    this._onRevealScroll = () => {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(() => { pending = false; sweep(); });
+    };
+    document.addEventListener("scroll", this._onRevealScroll, { passive: true, capture: true });
+    window.addEventListener("resize", this._onRevealScroll, { passive: true });
+    this._revealTimer = setInterval(() => {
+      if (!els.some(el => el.style.opacity === "0" || (el.style.clipPath || "").indexOf("100%") > -1)) {
+        clearInterval(this._revealTimer);
+        this._revealTimer = null;
+        return;
+      }
+      sweep();
+    }, 220);
+  }
+
+  setupScroll() {
+    if (this.motion === "ninguno") return;
+    const nodes = Array.from(document.querySelectorAll("[data-sp]"));
+    if (!nodes.length) return;
+    const factor = this.motion === "sutil" ? 0.5 : 1;
+    let ticking = false;
+    const apply = () => {
+      const h = window.innerHeight;
+      nodes.forEach(n => {
+        const r = n.getBoundingClientRect();
+        if (r.bottom < -400 || r.top > h + 400) return;
+        const prog = (r.top + r.height / 2 - h / 2) / h;
+        const sp = parseFloat(n.dataset.sp || "0") * factor;
+        n.style.willChange = "transform";
+        n.style.transform = "translate3d(0," + (-prog * sp * h).toFixed(1) + "px,0)";
+      });
+      ticking = false;
+    };
+    this._onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(apply); } };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    window.addEventListener("resize", this._onScroll, { passive: true });
+    apply();
+  }
+
+  setupParallax() {
+    if (this.motion !== "completo") return;
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    const cursor = document.querySelector("[data-cursor]");
+    if (!cursor) return;
+    this._onMove = (e) => {
+      cursor.style.transform = "translate3d(" + e.clientX + "px," + e.clientY + "px,0) scale(" + (this._hot ? 1 : 0) + ")";
+    };
+    window.addEventListener("mousemove", this._onMove, { passive: true });
+  }
+
+  setupNavLogo() {
+    const logo = document.querySelector("[data-navlogo]");
+    const hero = document.getElementById("top");
+    if (!logo || !hero) return;
+    const sync = () => {
+      const past = hero.getBoundingClientRect().bottom < 140;
+      logo.style.opacity = past ? "1" : "0";
+      logo.style.pointerEvents = past ? "auto" : "none";
+    };
+    window.addEventListener("scroll", sync, { passive: true });
+    sync();
+  }
+
+  setupServices() {
+    const rows = Array.from(document.querySelectorAll("[data-svc]"));
+    const media = Array.from(document.querySelectorAll("[data-svcmedia]"));
+    const caption = document.querySelector("[data-svccaption]");
+    rows.forEach(row => {
+      const title = row.querySelector("[data-svctitle]");
+      const arrow = row.querySelector("[data-svcarrow]");
+      row.addEventListener("mouseenter", () => {
+        media.forEach(m => { m.style.opacity = m.dataset.for === String(row.dataset.index) ? "1" : "0"; });
+        if (caption && title) caption.textContent = title.textContent;
+        if (title) { title.style.transform = "translateX(10px)"; title.style.color = "var(--sortu-terracota)"; }
+        if (arrow) { arrow.style.opacity = "1"; arrow.style.transform = "none"; }
+      });
+      row.addEventListener("mouseleave", () => {
+        if (title) { title.style.transform = "none"; title.style.color = ""; }
+        if (arrow) { arrow.style.opacity = "0"; arrow.style.transform = "translateX(-8px)"; }
+      });
+    });
+  }
+
+  setupTiles() {
+    const cursor = document.querySelector("[data-cursor]");
+    document.querySelectorAll("[data-tilewrap]").forEach(wrap => {
+      const media = wrap.querySelector("[data-media]");
+      const isLink = wrap.tagName === "A";
+      wrap.addEventListener("mouseenter", () => {
+        if (media) media.style.transform = "scale(1.045)";
+        if (isLink && cursor) { this._hot = true; cursor.style.opacity = "1"; }
+      });
+      wrap.addEventListener("mouseleave", () => {
+        if (media) media.style.transform = "none";
+        if (cursor) { this._hot = false; cursor.style.opacity = "0"; }
+      });
+    });
+  }
+
+  closeMenu() {
+    const m = document.querySelector("[data-mobilemenu]");
+    if (m) m.style.display = "none";
+  }
+
+  renderVals() {
+    return {
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      toggleMenu: () => {
+        const m = document.querySelector("[data-mobilemenu]");
+        if (m) m.style.display = m.style.display === "flex" ? "none" : "flex";
+      },
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
