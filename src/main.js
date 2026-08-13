@@ -87,30 +87,6 @@ function observeVideos() {
   videos.forEach((video) => observer.observe(video));
 }
 
-function setupServices() {
-  const rows = $$('[data-service]');
-  const videos = $$('[data-service-video]');
-  const caption = document.querySelector('[data-service-caption]');
-  if (!rows.length) return;
-
-  const activate = (index) => {
-    rows.forEach((row) => row.classList.toggle('is-active', row.dataset.service === String(index)));
-    videos.forEach((video) => {
-      const active = video.dataset.serviceVideo === String(index);
-      video.classList.toggle('is-active', active);
-      if (active) safePlay(video); else video.pause();
-    });
-    caption.textContent = rows[index].querySelector('.service-row__heading').childNodes[0].textContent.trim();
-  };
-  rows.forEach((row) => {
-    const activateRow = () => activate(row.dataset.service);
-    row.addEventListener('mouseenter', activateRow);
-    row.addEventListener('focus', activateRow);
-    row.addEventListener('click', activateRow);
-  });
-  activate(0);
-}
-
 function setupPortfolioCursor() {
   if (prefersReducedMotion || !window.matchMedia('(pointer: fine)').matches) return;
   const cursor = document.querySelector('.portfolio-cursor');
@@ -221,7 +197,6 @@ revealOnScroll();
 syncHeaderLogo();
 setupMenu();
 observeVideos();
-setupServices();
 setupPortfolioCursor();
 setupProjectDialog();
 setupParallax();

@@ -7,14 +7,15 @@
 @font-face { font-family: "Eastman Grotesque"; src: url("/assets/fonts/EastmanGrotesque-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
 
 :root {
+  color-scheme: only light;
   --font-display: "Eastman Grotesque", sans-serif;
   --font-body: "Eastman Grotesque", sans-serif;
   --page-gutter: clamp(24px, 4vw, 48px);
   --shadow-paper: 0 12px 28px -10px rgba(27, 58, 140, .24);
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: 88px; background: var(--sortu-crema); }
-body { min-width: 320px; overflow-x: hidden; }
+html { color-scheme: only light; scroll-behavior: smooth; scroll-padding-top: 88px; background: var(--sortu-crema); }
+body { min-width: 320px; overflow-x: hidden; background: var(--sortu-crema); }
 button, input, textarea { font: inherit; }
 button { border: 0; }
 svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
@@ -93,7 +94,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .eyebrow--green { color: var(--sortu-verde); }
 .services-layout { display: grid; grid-template-columns: 1.2fr .8fr; align-items: start; gap: clamp(48px, 6vw, 80px); }
 .service-list { border-bottom: 1px solid var(--border-subtle); }
-.service-row { width: 100%; padding: 31px 0; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; border-top: 1px solid var(--border-subtle); color: var(--ink-700); background: transparent; text-align: left; cursor: pointer; }
+.service-row { width: 100%; padding: 31px 0; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; border-top: 1px solid var(--border-subtle); color: var(--ink-700); background: transparent; text-align: left; }
 .service-row > span:last-child { max-width: 47ch; font-size: var(--text-base); line-height: var(--leading-relaxed); }
 .service-row__heading { display: inline-flex; align-items: center; gap: 15px; color: var(--ink-900); font-size: clamp(25px, 2.6vw, 35px); font-weight: 600; line-height: 1.06; letter-spacing: var(--tracking-tight); transition: color var(--dur-fast) var(--ease-out), transform var(--dur-base) var(--ease-soft); }
 .service-row__heading svg { width: 21px; height: 21px; color: var(--sortu-terracota); opacity: 0; transform: translateX(-9px); transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-base) var(--ease-soft); }
