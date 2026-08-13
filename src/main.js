@@ -181,6 +181,16 @@ function setupProjectDialog() {
   });
 }
 
+function setupImageComparisons() {
+  $$('[data-image-compare]').forEach((comparison) => {
+    const range = comparison.querySelector('[data-compare-range]');
+    if (!range) return;
+    const update = () => comparison.style.setProperty('--compare-position', `${range.value}%`);
+    range.addEventListener('input', update);
+    update();
+  });
+}
+
 function setupParallax() {
   if (prefersReducedMotion) return;
   const elements = $$('[data-parallax]');
@@ -240,5 +250,6 @@ setupHeroVideo();
 setupServices();
 setupPortfolioCursor();
 setupProjectDialog();
+setupImageComparisons();
 setupParallax();
 setupContactForm();

@@ -150,13 +150,17 @@
                 <h3>Gastronomía</h3>
               </article>
               <article class="project project--food reveal reveal--mask">
-                <div class="project-photo-grid" role="group" aria-label="Selección de fotografía gastronómica">
-                  <img src="/assets/portfolio/gastronomia/postre-cafe.jpg" alt="Postre y café" />
-                  <img src="/assets/portfolio/gastronomia/preparacion.jpg" alt="Preparación de croissants" />
-                  <img src="/assets/portfolio/gastronomia/horneado.jpg" alt="Croissants recién horneados" />
-                  <img src="/assets/portfolio/gastronomia/terminacion.jpg" alt="Terminación de croissants" />
+                <div class="project-compare" data-image-compare style="--compare-position: 50%">
+                  <img class="project-compare__image" src="/assets/portfolio/gastronomia/preparacion.jpg" alt="Croissants antes de hornear" />
+                  <div class="project-compare__after" data-compare-after>
+                    <img class="project-compare__image" src="/assets/portfolio/gastronomia/horneado.jpg" alt="Croissants después de hornear" />
+                  </div>
+                  <span class="project-compare__label project-compare__label--after" aria-hidden="true">Después</span>
+                  <span class="project-compare__label project-compare__label--before" aria-hidden="true">Antes</span>
+                  <span class="project-compare__divider" aria-hidden="true"><span></span></span>
+                  <input class="project-compare__range" data-compare-range type="range" min="0" max="100" value="50" aria-label="Deslizá para comparar los croissants antes y después de hornear" />
                 </div>
-                <p>Fotografía</p>
+                <p>Antes y después</p>
                 <h3>Gastronomía</h3>
               </article>
             </div>
@@ -173,7 +177,7 @@
 
             <div class="founder-grid">
               <article class="founder founder--martu reveal reveal--left">
-                <div class="founder-image-wrap"><h3>Martu</h3><img src="/videos-etc/Foto%20Martu.jpg" alt="Martu, cofundadora de Sortu Estudio" /></div>
+                <div class="founder-image-wrap"><h3>Martu</h3><img src="/assets/team/martu.png" alt="Martu, cofundadora de Sortu Estudio" /></div>
                 <p class="founder-role">Estrategia y realización</p>
                 <p>Productora audiovisual enfocada en marketing estratégico. Piensa cada pieza para que la marca tenga una llegada orgánica y humana.</p>
               </article>
