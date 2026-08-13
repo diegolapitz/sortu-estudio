@@ -193,7 +193,6 @@
               <h2 class="reveal reveal--mask">¿Empezamos por saber qué querés contar?</h2>
               <p class="section-lede reveal">Escribinos para agendar un café virtual y empezar a darle forma a tus ideas.</p>
               <div class="contact-links reveal">
-                <a href="mailto:guadamadrazo@estudiosortu.com.ar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 7 9 5.7a2 2 0 0 0 2 0L22 7" /></svg><span>guadamadrazo@estudiosortu.com.ar</span><b>↗</b></a>
                 <a href="https://instagram.com/sortuestudio" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><path d="M17.5 6.5h.01" /></svg><span>@sortuestudio</span><b>↗</b></a>
               </div>
             </div>
@@ -202,15 +201,19 @@
               <form data-contact-form>
                 <label><span>Nombre</span><input name="nombre" autocomplete="name" required /></label>
                 <label><span>Empresa o marca</span><input name="empresa" autocomplete="organization" /></label>
-                <label><span>Email o teléfono</span><input name="contacto" autocomplete="email" required /></label>
-                <label><span>Contanos qué tenés en mente</span><textarea name="mensaje" rows="4"></textarea></label>
-                <button class="button" type="submit">Enviar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7" /></svg></button>
+                <label><span>Email</span><input name="email" type="email" autocomplete="email" required /></label>
+                <label><span>Teléfono <em>(opcional)</em></span><input name="telefono" type="tel" autocomplete="tel" /></label>
+                <label><span>Contanos qué tenés en mente</span><textarea name="mensaje" rows="4" required></textarea></label>
+                <label class="contact-honeypot" aria-hidden="true"><span>Website</span><input name="website" type="text" tabindex="-1" autocomplete="off" /></label>
+                <button class="button" type="submit"><span data-submit-label>Enviar</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7" /></svg></button>
+                <p class="contact-form__status" data-contact-status aria-live="polite" hidden></p>
               </form>
               <div class="contact-success" hidden data-contact-success>
                 <p class="eyebrow eyebrow--terracotta">Listo</p>
-                <h3>Armamos tu mensaje.</h3>
-                <p>Se abrió tu correo para enviar la consulta directamente a Estudio Sortu. Si no se abre, escribinos a guadamadrazo@estudiosortu.com.ar</p>
+                <h3>Recibimos tu mensaje.</h3>
+                <p>Gracias por escribirnos. Te respondemos a la brevedad.</p>
               </div>
+              <p class="contact-direct-email">¿Preferís escribirnos? <a href="mailto:hola@sortuestudio.com">hola@sortuestudio.com</a></p>
             </div>
           </div>
         </section>

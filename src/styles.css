@@ -199,13 +199,20 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .contact-form form[hidden], .contact-success[hidden] { display: none; }
 .contact-form label { display: flex; flex-direction: column; gap: 6px; }
 .contact-form label span { color: var(--ink-500); font-size: var(--text-3xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; }
+.contact-form label em { font-style: normal; font-weight: 400; letter-spacing: var(--tracking-normal); text-transform: none; }
 .contact-form input, .contact-form textarea { width: 100%; padding: 14px 16px; border: 1px solid var(--ink-200); border-radius: var(--radius-md); outline: none; color: var(--ink-900); background: var(--paper); font-size: var(--text-base); line-height: 1.3; transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); }
 .contact-form input:focus, .contact-form textarea:focus { border-color: var(--sortu-azul); box-shadow: 0 0 0 3px rgba(43, 93, 166, .14); }
 .contact-form textarea { resize: vertical; min-height: 114px; }
 .contact-form .button { align-self: flex-start; margin-top: 7px; }
+.contact-form .button:disabled { cursor: wait; opacity: .7; transform: none; }
+.contact-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.contact-form__status { min-height: 1.4em; margin: 0; color: var(--ink-500); font-size: var(--text-sm); line-height: 1.45; }
+.contact-form__status.is-error { color: var(--sortu-carmesi); }
 .contact-success { min-height: 420px; justify-content: center; }
 .contact-success h3 { margin: 0; color: var(--ink-900); font-size: var(--text-2xl); }
 .contact-success p:last-child { max-width: 37ch; margin: 0; color: var(--ink-700); font-size: var(--text-base); line-height: var(--leading-relaxed); }
+.contact-direct-email { margin: 0; padding: 0 40px 40px; color: var(--ink-500); font-size: var(--text-sm); line-height: var(--leading-relaxed); }
+.contact-direct-email a { color: var(--sortu-terracota); text-decoration-color: rgba(199, 91, 59, .45); text-underline-offset: 3px; }
 .contact-shape { left: -150px; bottom: -100px; width: 310px; opacity: .85; animation: drift-b 36s var(--ease-in-out) infinite; }
 
 .site-footer { background: var(--sortu-crema); }
@@ -302,6 +309,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
   .founder--martu { justify-self: start; }
   .founder--guada { justify-self: end; }
   .contact-form form, .contact-success { padding: 32px 24px; }
+  .contact-direct-email { padding: 0 24px 30px; }
   .contact-links a { padding: 15px 16px; font-size: 15px; }
   .footer-inner { align-items: flex-start; flex-direction: column; }
   .footer-inner > div { margin-left: 0; }

@@ -175,24 +175,41 @@ function setupContactForm() {
   const form = document.querySelector('[data-contact-form]');
   const shell = document.querySelector('[data-form-shell]');
   const success = document.querySelector('[data-contact-success]');
-  if (!form || !shell || !success) return;
-  form.addEventListener('submit', (event) => {
+  const status = document.querySelector('[data-contact-status]');
+  const submitButton = form?.querySelector('button[type="submit"]');
+  const submitLabel = form?.querySelector('[data-submit-label]');
+  if (!form || !shell || !success || !status || !submitButton || !submitLabel) return;
+
+  const setStatus = (message = '', type = '') => {
+    status.textContent = message;
+    status.hidden = !message;
+    status.classList.toggle('is-error', type === 'error');
+  };
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
     const values = Object.fromEntries(new FormData(form));
-    const subject = `Consulta web — ${values.nombre}`;
-    const body = [
-      `Nombre: ${values.nombre}`,
-      `Empresa o marca: ${values.empresa || '—'}`,
-      `Email o teléfono: ${values.contacto}`,
-      '',
-      'Mensaje:',
-      values.mensaje || '—',
-    ].join('\n');
-    window.location.href = `mailto:guadamadrazo@estudiosortu.com.ar?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    form.hidden = true;
-    success.hidden = false;
-    shell.classList.add('is-sent');
+    submitButton.disabled = true;
+    submitLabel.textContent = 'Enviando…';
+    setStatus('Enviando tu consulta…');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(values),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || 'No pudimos enviar el mensaje. Probá nuevamente.');
+      form.hidden = true;
+      success.hidden = false;
+      shell.classList.add('is-sent');
+    } catch (error) {
+      setStatus(error.message || 'No pudimos enviar el mensaje. Probá nuevamente.', 'error');
+      submitButton.disabled = false;
+      submitLabel.textContent = 'Enviar';
+    }
   });
 }
 
