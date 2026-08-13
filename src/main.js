@@ -77,7 +77,7 @@ function safePlay(video) {
 }
 
 function observeVideos() {
-  const videos = $$('video');
+  const videos = $$('[data-project-open] video');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(({ target, isIntersecting, intersectionRatio }) => {
       if (isIntersecting && intersectionRatio > 0.25) safePlay(target);
@@ -123,9 +123,14 @@ function setupProjectDialog() {
 
   triggers.forEach((trigger) => {
     trigger.addEventListener('click', () => {
+      const previewVideo = trigger.querySelector('video');
+      const source = previewVideo?.currentSrc || previewVideo?.src;
+      if (!source) return;
       opener = trigger;
       title.textContent = trigger.dataset.projectTitle;
-      video.src = trigger.dataset.projectSrc;
+      video.pause();
+      video.src = source;
+      video.load();
       dialog.hidden = false;
       safePlay(video);
     });

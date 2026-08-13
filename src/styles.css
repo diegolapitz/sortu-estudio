@@ -227,7 +227,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 @media (max-width: 1080px) {
   .hero-grid, .section-heading--split, .services-layout, .contact-inner { grid-template-columns: 1fr; }
   .hero-grid { gap: 48px; }
-  .hero-art { width: min(100%, 700px); min-height: 420px; margin: -68px auto 0; }
+  .hero-art { width: min(100%, 700px); min-height: 420px; margin: -68px auto 0; overflow: clip; isolation: isolate; }
   .hero-art .hero-shape--ocre { right: -3%; width: min(480px, 58vw); }
   .hero-art .hero-shape--coral { right: 4%; width: min(460px, 56vw); }
   .hero-art .hero-shape--blue { left: 8%; width: clamp(108px, 18vw, 170px); }
@@ -248,6 +248,17 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
   .mobile-nav.is-open { display: flex; }
   .hero { min-height: auto; }
   .hero-art { min-height: 365px; }
+}
+
+/* Entre tablet y escritorio angosto el hero ya no es una composición de dos
+   columnas: el arte queda contenido en su propia franja y se reacomoda solo
+   mientras la ventana cambia de tamaño. */
+@media (min-width: 621px) and (max-width: 980px) {
+  .hero-art { width: min(100%, 640px); min-height: 350px; margin-top: -24px; }
+  .hero-art .hero-shape--ocre { top: 5%; right: 8%; width: min(350px, 52vw); }
+  .hero-art .hero-shape--coral { right: 10%; bottom: -3%; width: min(340px, 50vw); }
+  .hero-art .hero-shape--blue { bottom: 9%; left: 15%; width: clamp(102px, 17vw, 142px); }
+  .hero-art .hero-branch { top: 12%; left: 23%; width: min(150px, 21vw); }
 }
 
 @media (max-width: 620px) {
