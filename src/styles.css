@@ -211,8 +211,8 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .contact-success { min-height: 420px; justify-content: center; }
 .contact-success h3 { margin: 0; color: var(--ink-900); font-size: var(--text-2xl); }
 .contact-success p:last-child { max-width: 37ch; margin: 0; color: var(--ink-700); font-size: var(--text-base); line-height: var(--leading-relaxed); }
-.contact-direct-email { margin: 0; padding: 0 40px 40px; color: var(--ink-500); font-size: var(--text-sm); line-height: var(--leading-relaxed); }
-.contact-direct-email a { color: var(--sortu-terracota); text-decoration-color: rgba(199, 91, 59, .45); text-underline-offset: 3px; }
+.contact-copy .contact-direct-email { margin: -8px 0 0; color: rgba(245, 237, 214, .76); font-size: var(--text-sm); line-height: var(--leading-relaxed); }
+.contact-copy .contact-direct-email a { color: var(--sortu-ocre); text-decoration-color: rgba(232, 168, 56, .5); text-underline-offset: 3px; }
 .contact-shape { left: -150px; bottom: -100px; width: 310px; opacity: .85; animation: drift-b 36s var(--ease-in-out) infinite; }
 
 .site-footer { background: var(--sortu-crema); }
@@ -309,7 +309,6 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
   .founder--martu { justify-self: start; }
   .founder--guada { justify-self: end; }
   .contact-form form, .contact-success { padding: 32px 24px; }
-  .contact-direct-email { padding: 0 24px 30px; }
   .contact-links a { padding: 15px 16px; font-size: 15px; }
   .footer-inner { align-items: flex-start; flex-direction: column; }
   .footer-inner > div { margin-left: 0; }
