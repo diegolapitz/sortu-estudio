@@ -14,8 +14,8 @@
   --shadow-paper: 0 12px 28px -10px rgba(27, 58, 140, .24);
 }
 
-html { color-scheme: only light; scroll-behavior: smooth; scroll-padding-top: 88px; background: var(--sortu-crema); }
-body { min-width: 320px; overflow-x: hidden; background: var(--sortu-crema); }
+html { color-scheme: only light; forced-color-adjust: none; scroll-behavior: smooth; scroll-padding-top: 88px; background: var(--sortu-crema); }
+body { min-width: 320px; overflow-x: hidden; background: var(--sortu-crema); forced-color-adjust: none; }
 button, input, textarea { font: inherit; }
 button { border: 0; }
 svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
