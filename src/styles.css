@@ -116,7 +116,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .project--two { grid-column: 5 / span 3; margin-top: 88px; }
 .project--three { grid-column: 9 / span 3; margin-top: 24px; }
 .project--four { grid-column: 9 / span 3; grid-row: 2; margin-top: -28px; }
-.project--food { grid-column: 2 / span 4; grid-row: 2; margin-top: 26px; }
+.project--food { grid-column: 1 / span 6; grid-row: 2; margin-top: 26px; }
 .project-media { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; border-radius: var(--radius-lg); background: var(--sortu-azul-collage); color: inherit; cursor: pointer; }
 .project-media::after { position: absolute; inset: 0; content: ""; pointer-events: none; background: linear-gradient(145deg, transparent 55%, rgba(24, 72, 120, .25)); transition: background var(--dur-slow) var(--ease-out); }
 .project-media video { transition: transform 900ms var(--ease-soft); }
