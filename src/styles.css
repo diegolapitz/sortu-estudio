@@ -116,6 +116,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .project--two { grid-column: 5 / span 3; margin-top: 88px; }
 .project--three { grid-column: 9 / span 3; margin-top: 24px; }
 .project--four { grid-column: 9 / span 3; grid-row: 2; margin-top: -28px; }
+.project--five { grid-column: 9 / span 3; grid-row: 3; margin-top: -28px; }
 .project--food { grid-column: 1 / span 6; grid-row: 2; margin-top: 26px; }
 .project-media { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; border-radius: var(--radius-lg); background: var(--sortu-azul-collage); color: inherit; cursor: pointer; }
 .project-media::after { position: absolute; inset: 0; content: ""; pointer-events: none; background: linear-gradient(145deg, transparent 55%, rgba(24, 72, 120, .25)); transition: background var(--dur-slow) var(--ease-out); }
@@ -215,7 +216,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
   .section-heading--split { gap: 24px; }
   .service-preview { position: relative; top: auto; margin-top: 4px; }
   .founder-grid { gap: 56px; }
-  .project--one, .project--two, .project--three, .project--four { grid-column: span 6; grid-row: auto; margin-top: 0; }
+  .project--one, .project--two, .project--three, .project--four, .project--five { grid-column: span 6; grid-row: auto; margin-top: 0; }
   .project--food { grid-column: span 6; grid-row: auto; margin-top: 0; }
   .contact-inner { gap: 50px; }
   .contact-form { max-width: 650px; width: 100%; }
@@ -253,9 +254,10 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
   .section-heading, .about-heading { margin-bottom: 40px; }
   .services-shape, .portfolio-shape, .contact-shape { display: none; }
   .project-grid { gap: 38px 16px; }
-  .project--one, .project--two, .project--three, .project--four, .project--food { grid-column: span 12; grid-row: auto; margin-top: 0; }
+  .project--one, .project--two, .project--three, .project--four, .project--five, .project--food { grid-column: span 12; grid-row: auto; margin-top: 0; }
   .project--one, .project--three { width: min(100%, 350px); justify-self: start; }
   .project--two, .project--four { width: min(100%, 350px); justify-self: end; }
+  .project--five { width: min(100%, 350px); justify-self: start; }
   .project--food { width: min(100%, 350px); justify-self: start; }
   .project .project-media { aspect-ratio: 9 / 16; }
   .project-media span { top: auto; right: 12px; bottom: 12px; left: auto; display: grid; width: auto; height: auto; padding: 10px 13px; border-radius: var(--radius-pill); font-size: 10px; transform: none; }
