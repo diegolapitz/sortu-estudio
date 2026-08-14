@@ -1,5 +1,6 @@
 import './styles.css';
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrpzlpaa';
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
@@ -189,19 +190,27 @@ function setupContactForm() {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
-    const values = Object.fromEntries(new FormData(form));
+    const formData = new FormData(form);
+    const email = String(formData.get('email') || '').trim();
+    const telefono = String(formData.get('telefono') || '').trim();
+    if (!email && !telefono) {
+      setStatus('Dejanos un email o teléfono para poder responderte.', 'error');
+      form.elements.email.focus();
+      return;
+    }
     submitButton.disabled = true;
     submitLabel.textContent = 'Enviando…';
     setStatus('Enviando tu consulta…');
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(values),
+        headers: { Accept: 'application/json' },
+        body: formData,
       });
       const result = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(result.error || 'No pudimos enviar el mensaje. Probá nuevamente.');
+      const providerError = result.errors?.[0]?.message || result.error;
+      if (!response.ok) throw new Error(providerError || 'No pudimos enviar el mensaje. Probá nuevamente.');
       form.hidden = true;
       success.hidden = false;
       shell.classList.add('is-sent');

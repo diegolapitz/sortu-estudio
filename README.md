@@ -177,9 +177,8 @@ Fondo `--sortu-azul-profundo`, padding `96px 48px`, grid de dos columnas iguales
 
 - **Izquierda:** volanta ocre + H2 crema "¿Empezamos por saber qué querés contar?" (`clamp(32px,4.4vw,56px)`, `max-width:15ch`) + párrafo. Debajo, tres canales directos en filas de `16px 20px`, borde 1px `rgba(245,237,214,.20)`, radio 14px, fondo `rgba(245,237,214,.07)`, con icono Lucide ocre de 20px a la izquierda y `arrow-up-right` a la derecha. **Hover:** `translateY(-3px)` y fondo a `.12`.
   WhatsApp `+54 11 0000-0000` · `hola@estudiosortu.com` · `@estudiosortu` — **todos placeholders**.
-- **Derecha:** formulario sobre fondo `--sortu-crema`, `border-radius:24px`, `--shadow-paper`, padding `48px 40px`. Cuatro campos apilados con gap 16px: Nombre (requerido) · Empresa o marca · Email o teléfono (requerido) · "Contanos qué tenés en mente" (textarea, 4 filas). Labels en 11px versalitas `--ink-500`; inputs `--paper`, borde 1px `--ink-200`, radio 8px, padding `14px 16px`. Botón "ENVIAR" pill terracota.
-  **Al enviar**, el formulario se reemplaza por un estado de éxito: "Gracias, ya nos llega." + "Te escribimos a la brevedad. Si es urgente, mandanos un WhatsApp."
-  ⚠️ **El submit hoy es sólo local — no hay backend.** Hay que cablearlo (Formspree, Resend, un endpoint propio) y agregar manejo de error, estado de envío y protección anti-spam.
+- **Derecha:** formulario sobre fondo `--sortu-crema`, `border-radius:24px`, `--shadow-paper`, padding `48px 40px`. Campos apilados con gap 16px: Nombre (requerido) · Empresa o marca · Email o teléfono (al menos uno requerido) · "Contanos qué tenés en mente" (textarea, 4 filas). Labels en 11px versalitas `--ink-500`; inputs `--paper`, borde 1px `--ink-200`, radio 8px, padding `14px 16px`. Botón "ENVIAR" pill terracota.
+  **Al enviar**, se publica por AJAX a Formspree y el formulario se reemplaza por un estado de éxito. Los errores de red o del proveedor permanecen visibles en el mismo bloque, sin redirecciones ni apertura del cliente de correo.
 - Una forma coral sale por el borde inferior izquierdo.
 
 ### 8. Footer
@@ -229,7 +228,7 @@ Mínimo — es una landing casi estática:
 | servicio activo | índice 0–3 | `mouseenter` en una fila | Crossfade del preview + cambio de epígrafe |
 | logo del header visible | boolean | posición de scroll | Fade del logo de la barra |
 
-Sin data fetching. El único trabajo de backend pendiente es el envío del formulario.
+El formulario se envía directamente a Formspree desde el navegador; no requiere una función propia de Vercel ni variables de entorno.
 
 ---
 
