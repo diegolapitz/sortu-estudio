@@ -191,13 +191,6 @@ function setupContactForm() {
     event.preventDefault();
     if (!form.reportValidity()) return;
     const formData = new FormData(form);
-    const email = String(formData.get('email') || '').trim();
-    const telefono = String(formData.get('telefono') || '').trim();
-    if (!email && !telefono) {
-      setStatus('Dejanos un email o teléfono para poder responderte.', 'error');
-      form.elements.email.focus();
-      return;
-    }
     submitButton.disabled = true;
     submitLabel.textContent = 'Enviando…';
     setStatus('Enviando tu consulta…');
