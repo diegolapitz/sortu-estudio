@@ -224,6 +224,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .footer-inner > div { display: flex; flex-direction: column; gap: 4px; margin-left: auto; }
 .footer-inner > div a { align-self: flex-end; border: 0; color: var(--ink-700); font-size: var(--text-sm); }
 .footer-inner small { color: var(--ink-500); font-size: var(--text-xs); }
+.footer-inner [data-year] { font-family: Arial, Helvetica, sans-serif; font-variant-numeric: tabular-nums; }
 
 .reveal { opacity: 0; transform: translate3d(0, 24px, 0); transition: opacity 700ms var(--ease-out) var(--reveal-delay, 0ms), transform 900ms var(--ease-soft) var(--reveal-delay, 0ms), clip-path 1000ms var(--ease-soft) var(--reveal-delay, 0ms); }
 .reveal--mask { clip-path: inset(0 0 100% 0); opacity: 1; transform: none; }
