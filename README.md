@@ -1,5 +1,7 @@
 # Handoff: Landing page — Sortu Estudio
 
+> **Estado actual del producto y reglas de handoff:** ver [`docs/LLM_HANDOFF.md`](docs/LLM_HANDOFF.md). Este README conserva el brief y diseño de partida; algunas notas de placeholders describen el prototipo original y fueron superadas en la landing publicada.
+
 ## Overview
 
 Landing page comercial de una sola página para **Sortu Estudio**, estudio de comunicación y producción audiovisual fundado por Martu y Guada. Funciona como carta de presentación: un potencial cliente entra, entiende qué hace el estudio, ve trabajos reales, conoce a las dos fundadoras y se pone en contacto.
