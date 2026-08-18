@@ -5,3 +5,9 @@ dist/
 !.env.example
 
 .vercel
+
+# Graphify: sólo se versionan los tres artefactos de handoff.
+graphify-out/*
+!graphify-out/GRAPH_REPORT.md
+!graphify-out/graph.html
+!graphify-out/graph.json
